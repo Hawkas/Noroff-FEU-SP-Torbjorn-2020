@@ -1,0 +1,79 @@
+/*!------------ Universal Fixes ---------------- */
+/*!----------------------------------------------*/
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Color styles (extracted from Figma)*/
+:root {
+  --white: rgba(239, 239, 239, 1);
+  --black: rgba(13, 19, 23, 1);
+  --orange: rgba(234, 134, 43, 1);
+  --turquoise: rgba(0, 255, 204, 1);
+  --turquoise-dark: rgba(52, 183, 167, 1);
+  --light-dark: rgba(49, 54, 58, 1);
+  --whitetrans: rgba(239, 239, 239, 0.7);
+  --blacktrans: rgba(49, 54, 58, 0.8);
+  /* Text style */
+  --exo: "Exo 2", Arial, sans-serif;
+  --h1: clamp(2.313rem, 1.2923rem + 4.5363vw, 5.375rem);
+  --bodytext: clamp(1rem, 0.8897rem + 0.4902vw, 1.125rem);
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+h1 {
+  font-family: var(--exo);
+  font-size: var(--h1);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 82.69%;
+  letter-spacing: 0.025em;
+}
+.hometitle {
+  letter-spacing: 0.045em;
+}
+h1 > span {
+  display: block;
+  letter-spacing: 0.07em;
+}
+
+.page-container {
+  margin: 0 auto 0 auto;
+  width: 100vw;
+  max-width: 1440px;
+}
+
+.content-container {
+  padding: 0 clamp(15px, -1.2917rem + 9.9074vw, 122px) 0;
+}
+
+/*!----------HEADER------------*/
+nav {
+  background-color: var(--black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav > img {
+  height: clamp(27.59px, 6.51vw, 50px);
+  width: auto;
+}
+
+/*!------------MAIN-------------*/
+.herowrap {
+  height: 998px;
+  width: 1440px;
+  overflow: hidden;
+}
+.herobanner {
+  object-fit: cover;
+  object-position: -355px -340px;
+}
