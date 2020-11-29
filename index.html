@@ -18,10 +18,7 @@
     <link rel="stylesheet" href="css/stylesheet.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
-    <script
-      src="https://kit.fontawesome.com/ea2405e1e7.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/ea2405e1e7.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="page-container">
@@ -39,15 +36,22 @@
       </header>
       <main>
         <div class="herowrap">
-          <img
-            class="herobanner"
-            src="images/homebannerfinal-2150w.jpg"
-            alt="Young girl in blue clothes, sitting on a stack of books while playing with the solar system"
-          />
+          <picture class="imagegradient">
+            <source media="(max-width: 767px)" srcset="images/homebanner-768w.jpg 768w">
+            <source media="(min-width: 768px)" srcset="images/homebanner-1440w.jpg 1440px">
+            <img class="herobanner"src="images/homebanner-1440w.jpg"alt="Young girl in blue clothes, sitting on a stack of books while playing with the solar system"/>
+          </picture>
         </div>
         <h1 class="hometitle">
           EXPLORE THE <span class="boundaries">BOUNDARIES</span>
         </h1>
+        <h2>HEADER 2</h2>
+        <h3>HEADER 3</h3>
+        <h4>HEADER 4</h4>
+        <h5>HEADER 5</h5>
+        <p>bodytext</p>
+        <p>footerbody</p>
+        <p>buttontext</p>
       </main>
     </div>
   </body>
