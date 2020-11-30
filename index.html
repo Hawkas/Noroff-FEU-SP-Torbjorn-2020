@@ -5,54 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Community Science Museum</title>
     <meta author="Torbjørn Haukås" />
-    <meta
-      name="description"
-      content="Welcome to the Community Science Museum, Bergen. Join us and experience the frontier of science through our interactive displays and award-winning exhibitions."
-    />
+    <meta name="description" content="Welcome to the Community Science Museum, Bergen. Join us and experience the frontier of science through our interactive displays and award-winning exhibitions."/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="css/normalize.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300..900&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="css/stylesheet.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
     <script src="https://kit.fontawesome.com/ea2405e1e7.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="page-container">
       <header>
-        <nav class="content-container">
-          <img src="images/logo-desktop.svg" alt="Our Logo" />
-          <ul class="navbuttons">
-            <li><a href="visit.html">VISIT</a></li>
-            <li><a href="exhibits.html">EXHIBITIONS</a></li>
-            <li><a href="getinvolved.html">GET INVOLVED</a></li>
-            <li><a href="aboutus.html">ABOUT US</a></li>
-            <li><a href="aboutus.html#contactform">CONTACT US</a></li>
+        <nav class="section-container navblock">
+          <img class="navblock__logo" src="images/logo-desktop.svg" alt="Our Logo"/>
+          <input type="checkbox" name="checkbox-hack" id="hamburger">
+          <ul class="navblock__list navblock__list--home">
+            <li class="navblock__button1"><a href="visit.html">VISIT</a></li>
+            <li class="navblock__button2"><a href="exhibits.html">EXHIBITIONS</a></li>
+            <li class="navblock__button3"><a href="getinvolved.html">GET INVOLVED</a></li>
+            <li class="navblock__button4"><a href="aboutus.html">ABOUT US</a></li>
+            <li class="navblock__button5"><a href="aboutus.html#contactform">CONTACT US</a></li>
           </ul>
         </nav>
       </header>
       <main>
-        <div class="herowrap">
-          <picture class="imagegradient">
-            <source media="(max-width: 767px)" srcset="images/homebanner-768w.jpg 768w">
-            <source media="(min-width: 768px)" srcset="images/homebanner-1440w.jpg 1440px">
-            <img class="herobanner"src="images/homebanner-1440w.jpg"alt="Young girl in blue clothes, sitting on a stack of books while playing with the solar system"/>
-          </picture>
+        <section class="herobanner herobanner--home">
+          <div class="herobanner__imagewrap">
+            <picture class="herobanner__gradient">
+              <source media="(max-width: 767px)" srcset="images/homebanner-768w.jpg 768w">
+              <source media="(min-width: 768px)" srcset="images/homebanner-2560w.jpg 2560w">
+              <img class="herobanner__image" src="images/homebanner-2560w.jpg"alt="Young girl in blue clothes, sitting on a stack of books while playing with the solar system"/>
+            </picture>
+          </div>
+        <div class="section-container herobanner__textblock">
+          <h1 class="herobanner__title herobanner__title--home">
+            EXPLORE THE <span>BOUNDARIES</span>
+          </h1>
+          <p class="herobanner__bodytext">Join us at the Community Science Museum and explore science in a new and exciting way.</p>
+          <a class="cta cta--turq herobanner__cta" href="visit.html"><span class="buttontext">PLAN YOUR VISIT</span><i class="fas fa-chevron-right"></i></a>
         </div>
-        <h1 class="hometitle">
-          EXPLORE THE <span class="boundaries">BOUNDARIES</span>
-        </h1>
-        <h2>HEADER 2</h2>
-        <h3>HEADER 3</h3>
-        <h4>HEADER 4</h4>
-        <h5>HEADER 5</h5>
-        <p>bodytext</p>
-        <p>footerbody</p>
-        <p>buttontext</p>
+      </section>
       </main>
-    </div>
   </body>
 </html>
