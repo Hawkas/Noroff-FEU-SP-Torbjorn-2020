@@ -56,6 +56,9 @@ html {
   --bodytext: 1rem;
   --footerbody: 0.875rem;
   --buttontext: 1.125rem;
+  /* Other variables */
+  --paddington: clamp(45px, 19.344px + 7.1289vw, 122px);
+  --paddingless: clamp(15px, -20.6672px + 9.9074vw, 122px); 
 } 
 @media only screen and (min-width: 768px) { /* Fallbacks in-case clamp doesnt work */
   :root {
@@ -149,11 +152,10 @@ h1, h2, h3, h4, h5, .buttontext {
 /* To align content along the same linearly scaling margin*/
 .section-container {
   padding: 0 15px; /* Fallback for Firefox Android & Opera Android */
-  padding: 0 clamp(15px, -20.6672px + 9.9074vw, 122px);  
+  padding: 0 var(--paddingless); 
   margin: 0 auto;
   width: 100%;
   max-width: 1440px;
-  
 }
 /* Buttons */
 .cta {
@@ -180,22 +182,58 @@ header {
   width: 100vw;
 }
 .navblock {
+  padding: 0;
   display: flex;
+  flex-flow: wrap;
   justify-content: space-between;
   align-items: center;
+  color: var(--white);
 }
 .navblock__logo {
   height: 27.59px; /* Fallback for Firefox Android & Opera Android */
   height: clamp(27.59px, 19.344px + 2.1289vw, 50px);
   width: auto;
 }
-.navblock__list {
-  color: var(--white);
+.navblock__logowrap, .navblock__dropdown {
+  padding: clamp(24.21px, 1vw, 36.5px) var(--paddingless);
+  
 }
+.navblock__list {
+  flex-basis: 100%;
+  flex-flow: column;
+}
+.navblock__list li {
+  display: inline-block;
+}
+.navblock__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0px 1px 0px #31363A;
+  padding: 30px var(--paddington);
+}
+.navblock__button > i {
+}
+
+
 /* Dropdown menu checkbox hack */
+.navblock__dropdown {
+  padding-right: var(--paddington);
+  font-size: clamp(27.59px, 19.344px + 2.1289vw, 50px);
+  cursor: pointer;
+}
 #hamburger {
   display: none;
 }
+.navblock__list {
+  display: none;
+  border-top: 3px solid var(--light-dark);
+}
+#hamburger:checked ~ .navblock__list {
+  display: flex;
+}
+
 
 /*!------------MAIN-------------*/
 
@@ -235,6 +273,8 @@ header {
 }
 
 .herobanner__textblock {
+  padding: 45px; /* Fallback for Firefox Android & Opera Android */
+  padding: 0 var(--paddington);
   margin-top: 145px; /* Fallback for Firefox Android & Opera Android */
   margin-top: clamp(145px, 73.344px + 19.9067vw, 360px); /* With this top margin and bodytext bottom margin, the button will maintain        */
   display: flex;                                          /* its distance from the bottom, scaling from 88px>120px.                           */ 
@@ -253,5 +293,8 @@ header {
   margin-bottom: 60px; /* Fallback for Firefox Android & Opera Android */
   width: 270px; /* Fallback for Firefox Android & Opera Android */
   margin-bottom: clamp(60px, 46.6672px + 3.7037vw, 100px);
-  width: clamp(270px, 143.7872 + 35.0815vw, 649px);
+  width: clamp(270px, 143.7872px + 35.0815vw, 649px);
+}
+.herobanner__cta {
+  margin-bottom: auto;
 }
