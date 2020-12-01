@@ -1,22 +1,89 @@
-
 /*?--------CSS RESET------------*/
 /*?-----------------------------*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
   vertical-align: baseline;
   list-style-type: none;
   text-decoration: none;
@@ -58,9 +125,10 @@ html {
   --buttontext: 1.125rem;
   /* Other variables */
   --paddington: clamp(45px, 19.344px + 7.1289vw, 122px);
-  --paddingless: clamp(15px, -20.6672px + 9.9074vw, 122px); 
-} 
-@media only screen and (min-width: 768px) { /* Fallbacks in-case clamp doesnt work */
+  --paddingless: clamp(15px, -20.6672px + 9.9074vw, 122px);
+}
+@media only screen and (min-width: 768px) {
+  /* Fallbacks in-case clamp doesnt work */
   :root {
     --h1: 3.679rem;
     --h2: 2.519rem;
@@ -72,7 +140,8 @@ html {
     --buttontext: 1.25rem;
   }
 }
-@media only screen and (min-width: 1368px) { /* Fallbacks in-case clamp doesnt work */
+@media only screen and (min-width: 1368px) {
+  /* Fallbacks in-case clamp doesnt work */
   :root {
     --h1: 5.625rem;
     --h2: 3.375rem;
@@ -83,14 +152,14 @@ html {
 }
 @supports (font-size: clamp(1rem, 2vw, 3rem)) {
   :root {
-  --h1: clamp(2.5rem, 1.4583rem + 4.6296vw, 5.625rem); /* Linear scaling from 40px to 90px */
-  --h2: clamp(2rem, 1.5417rem + 2.0370vw, 3.375rem); /* from 32px to 54px */
-  --h3: clamp(1.5rem, 1.2500rem + 1.1111vw, 2.25rem); /* from 24px to 36px */
-  --h4: clamp(1.5rem, 1.4373rem + 0.2785vw, 1.688rem); /* from 24px to 27px */
-  --h5: clamp(1.313rem, 1.2507rem + 0.2770vw, 1.5rem); /* From 21px to 24px */
-  --bodytext: clamp(1rem, 0.8897rem + 0.4902vw, 1.125rem); /* from 16px to 18px */
-  --footerbody: clamp(0.875rem, 0.8333rem + 0.1852vw, 1rem); /* from 14px to 16px */
-  --buttontext: clamp(1.125rem, 1.0833rem + 0.1852vw, 1.25rem); /* from 18px to 20px */
+    --h1: clamp(2.5rem, 1.4583rem + 4.6296vw, 5.625rem); /* Linear scaling from 40px to 90px */
+    --h2: clamp(2rem, 1.5417rem + 2.037vw, 3.375rem); /* from 32px to 54px */
+    --h3: clamp(1.5rem, 1.25rem + 1.1111vw, 2.25rem); /* from 24px to 36px */
+    --h4: clamp(1.5rem, 1.4373rem + 0.2785vw, 1.688rem); /* from 24px to 27px */
+    --h5: clamp(1.313rem, 1.2507rem + 0.277vw, 1.5rem); /* From 21px to 24px */
+    --bodytext: clamp(1rem, 0.8897rem + 0.4902vw, 1.125rem); /* from 16px to 18px */
+    --footerbody: clamp(0.875rem, 0.8333rem + 0.1852vw, 1rem); /* from 14px to 16px */
+    --buttontext: clamp(1.125rem, 1.0833rem + 0.1852vw, 1.25rem); /* from 18px to 20px */
   }
 }
 
@@ -145,14 +214,19 @@ p {
 .footerbody {
   font-size: var(--footerbody);
 }
-h1, h2, h3, h4, h5, .buttontext {
+h1,
+h2,
+h3,
+h4,
+h5,
+.buttontext {
   letter-spacing: 0.02em;
 }
 /*? Universal Components */
 /* To align content along the same linearly scaling margin*/
 .section-container {
   padding: 0 15px; /* Fallback for Firefox Android & Opera Android */
-  padding: 0 var(--paddingless); 
+  padding: 0 var(--paddingless);
   margin: 0 auto;
   width: 100%;
   max-width: 1440px;
@@ -164,16 +238,21 @@ h1, h2, h3, h4, h5, .buttontext {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px; /* Fallback for Firefox Android & Opera Android */
-  padding: clamp(10px, 8.3328px + 0.4630vw, 15px) 20px;
+  padding: clamp(10px, 8.3328px + 0.463vw, 15px) 20px;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
 }
 .cta--turq {
   background-color: var(--turquoise);
 }
-.cta--turq i {
+.cta--turq .fas {
   margin-left: 20px;
 }
 .cta--orange {
   background-color: var(--orange);
+}
+.cta--turq:hover {
+  background-color: var(--white);
+  color: var(--black);
 }
 
 /*!----------HEADER------------*/
@@ -184,69 +263,177 @@ header {
 .navblock {
   padding: 0;
   display: flex;
-  flex-flow: wrap;
   justify-content: space-between;
   align-items: center;
   color: var(--white);
 }
 .navblock__logo {
-  height: 27.59px; /* Fallback for Firefox Android & Opera Android */
-  height: clamp(27.59px, 19.344px + 2.1289vw, 50px);
+  height: 28px; /* Fallback for Firefox Android & Opera Android */
+  height: clamp(28px, 19.344px + 2.1289vw, 50px);
   width: auto;
 }
-.navblock__logowrap, .navblock__dropdown {
-  padding: clamp(24.21px, 1vw, 36.5px) var(--paddingless);
-  
+.navblock__logowrap::after {
+  content: "";
+  background-color: var(--white);
+  height: 3px;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  transform: scale(0, 1);
+  transform-origin: left;
+  transition: transform 250ms ease-in-out;
 }
-.navblock__list {
-  flex-basis: 100%;
-  flex-flow: column;
+.navblock__logowrap:hover::after,
+.navblock__logowrap:focus::after {
+  transform: scale(1, 1);
 }
-.navblock__list li {
-  display: inline-block;
-}
-.navblock__button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-shadow: 0px 1px 0px #31363A;
-  padding: 30px var(--paddington);
-}
-
-
-/* Dropdown menu checkbox hack */
+.navblock__logowrap,
 .navblock__dropdown {
-  padding-right: var(--paddington);
-  font-size: clamp(27.59px, 19.344px + 2.1289vw, 50px);
-  cursor: pointer;
-}
-#hamburger {
-  display: none;
-}
-.navblock__list {
-  display: none;
-  border-top: 3px solid var(--light-dark);
-}
-#hamburger:checked ~ .navblock__list {
-  display: flex;
+  margin: 24px 15px; /* Fallback for Firefox Android & Opera Android */
+  margin: clamp(23px, 1vw, 36.5px) var(--paddingless);
 }
 
+/* Dropdown menu checkbox hack stuff */
+.navblock__toggle,
+.navblock__cross {
+  display: none;
+}
+@media only screen and (max-width: 1023px) {
+  /* Keeping this in a media query since checkbox hack requires high specificity selectors and DRY i guess*/
+  header {
+    position: absolute;
+    top: 0;
+  }
+  .navblock {
+    position: relative;
+    flex-flow: wrap;
+  }
+  .navblock__list {
+    transform: scale(1, 0); /* Rather than using display:none, I'm using transform to allow for transition */
+    background: var(--black);
+    border-top: 3px solid var(--light-dark);
+    transition: transform 400ms ease-in-out;
+    transform-origin: top;
+    z-index: 7;
+    position: relative; /* Using positioning to make the menu overlap site content and not shuffle things around */
+    width: 100vw;
+  }
+  .navblock__button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: 2px solid var(--light-dark);
+    padding: 30px 45px; /* Fallback for Firefox Android & Opera Android */
+    padding: 30px var(--paddingless) 30px var(--paddington);
+    opacity: 0;
+    transition: opacity 150ms ease-in-out; /* Transition for text fading out, so it happens immediately */
+  }
+  .navblock__button:hover,
+  .navblock__button:focus {
+    /* Useless since hover wouldnt work on mobile anyway. Just in case someone is viewing this on a pc */
+    background-color: var(--light-dark);
+    border-bottom: 2px solid var(--white);
+  }
+  .navblock__dropdown {
+    position: relative;
+    font-size: 30px; /* Fallback for Firefox Android & Opera Android */
+    font-size: clamp(27.59px, 19.344px + 2.1289vw, 50px);
+    cursor: pointer; /* This is also just for me, obviously not gaining anything on touchscreens here */
+  }
 
+  .navblock__button > .fas {
+    margin-left: auto; /* Rather than space-between, doing it like this makes the content behave properly when it is shrunk */
+  }
+  .navblock__cross::selection {
+    /* So you can't highlight the cross */
+    background: transparent;
+  }
+  .navblock__cross {
+    display: inline-block;
+    position: absolute; /* To position it on top of the bars */
+    top: 0;
+    left: 2px; /* To compensate for the bars being wider */
+    right: 0;
+  }
+  .navblock__toggle:checked ~ .navblock__dropdown > .navblock__cross,
+  .fa-bars {
+    transform: scale(1);
+    transition: transform 400ms ease-in-out, opacity 250ms ease-in-out; /* Transition for icon when it appears */
+    opacity: 1;
+  }
+
+  .navblock__toggle:checked ~ .navblock__dropdown > .fas,
+  .navblock__cross {
+    transform: scale(0);
+    opacity: 0; /* So they fade in/out without clipping eachother */
+    transition: transform 250ms ease-in-out, opacity 250ms ease-in-out; /* Transition for icon when it disappears */
+  }
+  .navblock__toggle:checked ~ .navblock__list {
+    transform: scale(1);
+  }
+  .navblock__toggle:checked ~ .navblock__list .navblock__button {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms; /* The transition for when text fades in, with delay to avoid the text being visibly squeezed */
+  }
+}
+@media only screen and (min-width: 1024px) {
+  /* And since I'm using media queries for checkbox, I have to use another one here so I don't affect them */
+  .navblock__dropdown,
+  .navblock__button .fas {
+    /* Removing hamburger and the button icons */
+    display: none;
+  }
+  .navblock__list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: var(--paddingless);
+  }
+  .navblock__logowrap {
+    margin-right: clamp(80.78px, -286.6704px + 35.8077vw, 230px); /* Just to have the menu items more on the left on  */
+  } /* wider screens and still allow space-between to regulate spacing*/
+  .navblock__button {
+    position: relative;
+  }
+  .navblock__button span::after {
+    content: "";
+    display: block;
+    background: var(--white);
+    position: relative;
+    height: 3px;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform ease-in-out 250ms;
+  }
+  .navblock__button:hover span::after {
+    transform: scale(1, 1);
+  }
+}
 /*!------------MAIN-------------*/
 
 .herobanner {
   width: 100%;
-  margin: 0 auto;
+  margin: clamp(80.1667px, 71.664px + 2.3156vw, 105.933px) auto 0; /* To compensate for header being absolutely positioned */
   display: grid;
   grid-template-areas: "hero";
+  z-index: 4;
+}
+@media only screen and (min-width: 1024px) {
+  /* Undoing the above as positioning is not needed on header */
+  .herobanner {
+    margin: 0 auto;
+  }
 }
 .herobanner--home .herobanner__imagewrap {
   height: 513px; /* Fallback for Firefox Android & Opera Android */
   height: clamp(513px, 380.5872px + 36.7704vw, 910px);
   grid-area: hero;
 }
-.herobanner__gradient { /* To position gradient over image */
+.herobanner__gradient {
+  /* To position gradient over image */
   width: 100%;
   height: 100%;
   position: relative;
@@ -254,14 +441,14 @@ header {
 }
 
 .herobanner__gradient::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   display: inline-block;
-  background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #0D1317 100%);
+  background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #0d1317 100%);
 }
 .herobanner--home .herobanner__image {
   object-fit: cover;
@@ -275,12 +462,12 @@ header {
   padding: 0 var(--paddington);
   margin-top: 145px; /* Fallback for Firefox Android & Opera Android */
   margin-top: clamp(145px, 73.344px + 19.9067vw, 360px); /* With this top margin and bodytext bottom margin, the button will maintain        */
-  display: flex;                                          /* its distance from the bottom, scaling from 88px>120px.                           */ 
-  flex-flow: column;                                      /* This button is the one exception to my otherwise strict setup of margins/padding.*/
-  align-items: baseline;                                  /* This is due to image and text alignment. Couldn't have it both ways.             */
+  display: flex; /* its distance from the bottom, scaling from 88px>120px.                           */
+  flex-flow: column; /* This button is the one exception to my otherwise strict setup of margins/padding.*/
+  align-items: baseline; /* This is due to image and text alignment. Couldn't have it both ways.             */
   color: var(--white);
   grid-area: hero;
-  z-index: 9999;
+  z-index: 6;
 }
 .herobanner__title--home {
   margin-bottom: 15px; /* Fallback for Firefox Android & Opera Android */
