@@ -213,8 +213,6 @@ header {
   box-shadow: 0px 1px 0px #31363A;
   padding: 30px var(--paddington);
 }
-.navblock__button > i {
-}
 
 
 /* Dropdown menu checkbox hack */
