@@ -182,6 +182,7 @@ h2 {
 h3 {
   font-size: var(--h3);
   font-weight: 700;
+  line-height: 100%;
 }
 h4 {
   font-size: var(--h4);
@@ -221,6 +222,7 @@ h4,
 h5,
 .buttontext {
   letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 /*? Universal Components */
 /* To align content along the same linearly scaling margin*/
@@ -254,7 +256,27 @@ h5,
   background-color: var(--white);
   color: var(--black);
 }
-
+/* Links */
+.buttontext--link {
+  display: flex;
+  line-height: 100%;
+  align-items: baseline;
+  color: var(--orange);
+}
+.buttontext--link .fas {
+  margin-left: 7px;
+  font-size: calc(var(--buttontext) - 0.1875rem);
+  transition: transform 250ms ease-in-out;
+}
+.buttontext--link:hover,
+.buttontext--link:focus {
+  color: var(--white);
+}
+.buttontext--link:hover .fas,
+.buttontext--link:focus .fas {
+  transform: translateX(10px);
+  transition: transform 250ms ease-in-out;
+}
 /*!----------HEADER------------*/
 header {
   background-color: var(--black);
@@ -413,7 +435,7 @@ header {
   }
 }
 /*!------------MAIN-------------*/
-
+/** Hero image section styling */
 .herobanner {
   width: 100%;
   margin: clamp(80.1667px, 71.664px + 2.3156vw, 105.933px) auto 0; /* To compensate for header being absolutely positioned */
@@ -482,4 +504,82 @@ header {
 }
 .herobanner__cta {
   margin-bottom: auto;
+}
+
+/** Infobanner styling */
+.infobanner {
+  width: 100vw;
+  background: var(--light-dark);
+  color: white;
+}
+.infobanner__flexbox {
+  display: flex;
+  flex-flow: wrap;
+  align-items: flex-start;
+  margin: 0 calc(1rem * -1); /* Margin deficit to force wrap at set breakpoint */
+  padding: 30px 0; /* Fallback for Firefox Android & Opera Android */
+  padding: clamp(30px, -43.8464px + 7.2115vw, 60px) 0;
+}
+.infobanner__flexbox > * {
+  flex-grow: 1;
+  margin: 0 1rem; /* Returning margin deficit from container to flex-items */
+  flex-basis: calc(668px - 100% * 999); /* Flexbox Holy Albatross by Heydon Pickering */
+}
+
+.infobanner__block--opening {
+  max-width: 300px; /* Fallback for Firefox Android & Opera Android */
+  max-width: clamp(300px, -86.3632px + 37.7308vw, 457px);
+}
+.infobanner__block {
+  display: flex;
+  align-items: flex-start;
+}
+.infobanner__textblock {
+  display: flex;
+  flex-flow: column;
+}
+.infobanner__block--entry,
+.infobanner__block--opening {
+  margin-bottom: 30px;
+}
+.infobanner__textblock--opening {
+  margin-bottom: 0;
+}
+.infobanner__lists {
+  display: flex;
+  justify-content: space-between;
+}
+.infobanner__days > *,
+.infobanner__hours > * {
+  font-size: var(--bodytext);
+  margin-bottom: 15px;
+  line-height: 100%;
+}
+.infobanner__days {
+  font-weight: 600;
+}
+.infobanner__hours {
+  font-weight: 400;
+  color: var(--whitetrans);
+}
+.infobanner__days li:nth-child(4),
+.infobanner__hours li:nth-child(4) {
+  margin-bottom: 0;
+}
+.infobanner__title {
+  margin-bottom: 15px;
+}
+.infobanner__textblock--opening .infobanner__title {
+  margin-bottom: 15px; /* Fallback for Firefox Android & Opera Android */
+  margin-bottom: clamp(15px, -73.6352px + 8.6558vw, 51px);
+}
+.fa-fw.infobanner__icon {
+  /* Higher selector specificity to overrule Font Awesome's fa-fw width rule */
+  margin-right: 5px; /* Fallback for Firefox Android & Opera Android */
+  margin-right: clamp(5px, -19.616px + 2.4038vw, 15px);
+  color: var(--turquoise-dark);
+  width: 25px; /* Fallback for Firefox Android & Opera Android */
+  font-size: 1.563rem; /* Fallback for Firefox Android & Opera Android */
+  width: clamp(25px, 0.392px + 2.4038vw, 35px); /* Vertical alignment with differently sized icons is hard */
+  font-size: clamp(1.563rem, 0.0245rem + 2.4038vw, 2.188rem); /* 25px to 35px */
 }
