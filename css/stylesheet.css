@@ -101,16 +101,19 @@ html {
 *:after {
   box-sizing: inherit;
 }
-
+body {
+  background-color: var(--black);
+}
 /* Color styles (extracted from Figma)*/
 :root {
-  --white: rgba(239, 239, 239, 1);
+  --white: rgba(239, 235, 235, 1);
+  --whiter: rgba(239, 239, 239, 1);
   --black: rgba(21, 29, 34, 1);
   --orange: rgba(234, 134, 43, 1);
   --turquoise: rgba(0, 255, 204, 1);
   --turquoise-dark: rgba(52, 183, 167, 1);
-  --light-dark: rgba(49, 54, 58, 1);
-  --whitetrans: rgba(239, 239, 239, 0.7);
+  --light-dark: rgba(49, 54, 65, 1);
+  --whitetrans: rgba(239, 235, 235, 0.7);
   --blacktrans: rgba(49, 54, 58, 0.8);
   /* Text style */
   --exo: "Exo 2", Arial, sans-serif; /* Fallbacks in-case clamp doesnt work */
@@ -124,8 +127,18 @@ html {
   --footerbody: 0.875rem;
   --buttontext: 1.125rem;
   /* Other variables */
+  --paddington: 45px;
+  --paddingless: 15px;
+  --iconpadding: 15px;
+  --whitespace: 60px;
+  --sectiontitle: 30px;
   --paddington: clamp(45px, 19.344px + 7.1289vw, 122px);
   --paddingless: clamp(15px, -20.6672px + 9.9074vw, 122px);
+  --iconpadding: clamp(15px, -2.6672px + 4.9074vw, 68px);
+  --whitespace: clamp(60px, 15px + 12.5vw, 120px);
+  --sectiontitle: clamp(30px, -43.8464px + 7.2115vw, 60px);
+  --headershadow: 0px 5.65789px 4.52632px rgba(0, 0, 0, 0.5);
+  --boxshadow: 4px 6px 8px rgba(0, 0, 0, 0.25);
 }
 @media only screen and (min-width: 768px) {
   /* Fallbacks in-case clamp doesnt work */
@@ -169,6 +182,7 @@ h1 {
   font-size: var(--h1);
   font-weight: 800;
   line-height: 82.69%;
+  text-shadow: var(--headershadow);
 }
 
 h1 > span {
@@ -187,6 +201,7 @@ h3 {
 h4 {
   font-size: var(--h4);
   font-weight: 700;
+  line-height: 100%;
 }
 h5 {
   font-size: var(--h5);
@@ -226,8 +241,10 @@ h5,
 }
 /*? Universal Components */
 /* To align content along the same linearly scaling margin*/
+.fullwidth {
+  width: 100vw;
+}
 .section-container {
-  padding: 0 15px; /* Fallback for Firefox Android & Opera Android */
   padding: 0 var(--paddingless);
   margin: 0 auto;
   width: 100%;
@@ -236,25 +253,33 @@ h5,
 /* Buttons */
 .cta {
   color: var(--black);
+  text-shadow: var(--black) 4px 2px 20px;
   display: flex;
+  border-radius: 3px;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px; /* Fallback for Firefox Android & Opera Android */
   padding: clamp(10px, 8.3328px + 0.463vw, 15px) 20px;
-  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .cta--turq {
   background-color: var(--turquoise);
 }
 .cta--turq .fas {
   margin-left: 20px;
+  transition: transform 250ms ease-in-out;
 }
 .cta--orange {
   background-color: var(--orange);
 }
 .cta--turq:hover {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--black);
+  color: var(--whiter);
+  border-bottom: 3px solid var(--whiter);
+}
+.cta--turq:hover .fas,
+.cta--turq:focus .fas {
+  transform: translateX(5px);
 }
 /* Links */
 .buttontext--link {
@@ -280,14 +305,14 @@ h5,
 /*!----------HEADER------------*/
 header {
   background-color: var(--black);
-  width: 100vw;
+  z-index: 2;
 }
 .navblock {
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--white);
+  color: var(--whiter);
 }
 .navblock__logo {
   height: 28px; /* Fallback for Firefox Android & Opera Android */
@@ -305,7 +330,7 @@ header {
   display: block;
   transform: scale(0, 1);
   transform-origin: left;
-  transition: transform 250ms ease-in-out;
+  transition: transform 500ms ease-in-out;
 }
 .navblock__logowrap:hover::after,
 .navblock__logowrap:focus::after {
@@ -314,7 +339,7 @@ header {
 .navblock__logowrap,
 .navblock__dropdown {
   margin: 24px 15px; /* Fallback for Firefox Android & Opera Android */
-  margin: clamp(23px, 1vw, 36.5px) var(--paddingless);
+  margin: clamp(23px, 1vw, 36.5px) var(--iconpadding);
 }
 
 /* Dropdown menu checkbox hack stuff */
@@ -324,9 +349,17 @@ header {
 }
 @media only screen and (max-width: 1023px) {
   /* Keeping this in a media query since checkbox hack requires high specificity selectors and DRY i guess*/
-  header {
+  .navblock__relative {
+    position: relative;
+    width: 100%; /* Essential to keep block anchored below */
+  }
+  .navblock__absolute {
     position: absolute;
+    z-index: 2;
     top: 0;
+    transform: scale(1, 0);
+    transition: transform 400ms ease-in-out;
+    transform-origin: top;
   }
   .navblock {
     position: relative;
@@ -338,7 +371,7 @@ header {
     border-top: 3px solid var(--light-dark);
     transition: transform 400ms ease-in-out;
     transform-origin: top;
-    z-index: 7;
+    height: 100%;
     position: relative; /* Using positioning to make the menu overlap site content and not shuffle things around */
     width: 100vw;
   }
@@ -362,57 +395,67 @@ header {
     position: relative;
     font-size: 30px; /* Fallback for Firefox Android & Opera Android */
     font-size: clamp(27.59px, 19.344px + 2.1289vw, 50px);
-    cursor: pointer; /* This is also just for me, obviously not gaining anything on touchscreens here */
+    cursor: pointer; /* This is just for me, obviously not gaining anything on touchscreens here */
   }
-
-  .navblock__button > .fas {
-    margin-left: auto; /* Rather than space-between, doing it like this makes the content behave properly when it is shrunk */
+  .navblock__cross {
+    display: inline-block;
+    position: absolute; /* To position it on top of the bars */
+    line-height: 100%;
+    top: 4px;
+    left: 1px; /* To center on the bars */
+    right: 0;
   }
   .navblock__cross::selection {
     /* So you can't highlight the cross */
     background: transparent;
   }
-  .navblock__cross {
-    display: inline-block;
-    position: absolute; /* To position it on top of the bars */
-    top: 0;
-    left: 2px; /* To compensate for the bars being wider */
-    right: 0;
+  .navblock__button > .fas {
+    margin-left: auto; /* Rather than space-between, doing it like this makes the content behave properly when it is shrunk */
   }
-  .navblock__toggle:checked ~ .navblock__dropdown > .navblock__cross,
+.navblock__toggle:checked ~ .navblock__relative .navblock__absolute {
+  transform: scale(1);
+}
+  .navblock__toggle:checked ~ .navblock__dropdown .navblock__cross,
   .fa-bars {
     transform: scale(1);
-    transition: transform 400ms ease-in-out, opacity 250ms ease-in-out; /* Transition for icon when it appears */
+    transition: transform 400ms ease-in-out, opacity 10ms ease-in-out 150ms; /* Transition for icon when it appears */
     opacity: 1;
   }
 
-  .navblock__toggle:checked ~ .navblock__dropdown > .fas,
+  .navblock__toggle:checked ~ .navblock__dropdown .fa-bars,
   .navblock__cross {
     transform: scale(0);
     opacity: 0; /* So they fade in/out without clipping eachother */
     transition: transform 250ms ease-in-out, opacity 250ms ease-in-out; /* Transition for icon when it disappears */
   }
-  .navblock__toggle:checked ~ .navblock__list {
+  .navblock__toggle:checked ~ .navblock__relative .navblock__list {
     transform: scale(1);
   }
-  .navblock__toggle:checked ~ .navblock__list .navblock__button {
+  .navblock__toggle:checked ~ .navblock__relative .navblock__button {
     opacity: 1;
     transition: opacity 250ms ease-in-out 250ms; /* The transition for when text fades in, with delay to avoid the text being visibly squeezed */
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1023px) {
   /* And since I'm using media queries for checkbox, I have to use another one here so I don't affect them */
   .navblock__dropdown,
   .navblock__button .fas {
     /* Removing hamburger and the button icons */
     display: none;
   }
+  .navblock__relative,
+  .navblock__absolute {
+    width: 100%;
+    height: 100%;
+  }
+  .navblock__relative {
+    margin-right: var(--paddingless);
+  }
   .navblock__list {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: var(--paddingless);
   }
   .navblock__logowrap {
     margin-right: clamp(80.78px, -286.6704px + 35.8077vw, 230px); /* Just to have the menu items more on the left on  */
@@ -428,7 +471,7 @@ header {
     height: 3px;
     transform: scale(0, 1);
     transform-origin: left;
-    transition: transform ease-in-out 250ms;
+    transition: transform 350ms ease-in-out;
   }
   .navblock__button:hover span::after {
     transform: scale(1, 1);
@@ -437,16 +480,14 @@ header {
 /*!------------MAIN-------------*/
 /** Hero image section styling */
 .herobanner {
-  width: 100%;
-  margin: clamp(80.1667px, 71.664px + 2.3156vw, 105.933px) auto 0; /* To compensate for header being absolutely positioned */
+  width: 100vw;
   display: grid;
   grid-template-areas: "hero";
-  z-index: 4;
 }
 @media only screen and (min-width: 1024px) {
   /* Undoing the above as positioning is not needed on header */
   .herobanner {
-    margin: 0 auto;
+    margin-top: 0 auto;
   }
 }
 .herobanner--home .herobanner__imagewrap {
@@ -484,12 +525,12 @@ header {
   padding: 0 var(--paddington);
   margin-top: 145px; /* Fallback for Firefox Android & Opera Android */
   margin-top: clamp(145px, 73.344px + 19.9067vw, 360px); /* With this top margin and bodytext bottom margin, the button will maintain        */
-  display: flex; /* its distance from the bottom, scaling from 88px>120px.                           */
-  flex-flow: column; /* This button is the one exception to my otherwise strict setup of margins/padding.*/
-  align-items: baseline; /* This is due to image and text alignment. Couldn't have it both ways.             */
-  color: var(--white);
+  display: flex; /*                                         its distance from the bottom, scaling from 88px>120px.                           */
+  flex-flow: column; /*                                     This button is the one exception to my otherwise strict setup of margins/padding.*/
+  align-items: baseline; /*                                 This is due to image and text alignment. Couldn't have it both ways.             */
+  color: var(--whiter);
   grid-area: hero;
-  z-index: 6;
+  z-index: 1;
 }
 .herobanner__title--home {
   margin-bottom: 15px; /* Fallback for Firefox Android & Opera Android */
@@ -502,6 +543,9 @@ header {
   margin-bottom: clamp(60px, 46.6672px + 3.7037vw, 100px);
   width: clamp(270px, 143.7872px + 35.0815vw, 649px);
 }
+.herobanner__bodytext span {
+  white-space: nowrap;
+}
 .herobanner__cta {
   margin-bottom: auto;
 }
@@ -510,40 +554,43 @@ header {
 .infobanner {
   width: 100vw;
   background: var(--light-dark);
-  color: white;
+  color: var(--whiter);
 }
+
 .infobanner__flexbox {
+  padding: var(--whitespace) var(--paddingless) var(--whitespace) clamp(15px, -2.6672px + 4.9074vw, 68px);
+  width: 100vw;
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
-  flex-flow: wrap;
+  flex-wrap: wrap;
   align-items: flex-start;
-  margin: 0 calc(1rem * -1); /* Margin deficit to force wrap at set breakpoint */
-  padding: 30px 0; /* Fallback for Firefox Android & Opera Android */
-  padding: clamp(30px, -43.8464px + 7.2115vw, 60px) 0;
 }
 .infobanner__flexbox > * {
   flex-grow: 1;
-  margin: 0 1rem; /* Returning margin deficit from container to flex-items */
-  flex-basis: calc(668px - 100% * 999); /* Flexbox Holy Albatross by Heydon Pickering */
-}
-
-.infobanner__block--opening {
-  max-width: 300px; /* Fallback for Firefox Android & Opera Android */
-  max-width: clamp(300px, -86.3632px + 37.7308vw, 457px);
+  flex-basis: calc((668px - 100%) * 999); /* Flexbox Holy Albatross by Heydon Pickering. Container Query Hack */
 }
 .infobanner__block {
   display: flex;
   align-items: flex-start;
 }
+.infobanner__block--opening {
+  max-width: 300px; /* Fallback for Firefox Android & Opera Android */
+  max-width: clamp(300px, -86.3632px + 37.7308vw, 350px);
+  margin-right: var(--whitespace);
+}
 .infobanner__textblock {
   display: flex;
   flex-flow: column;
+  align-items: flex-start;
 }
 .infobanner__block--entry,
 .infobanner__block--opening {
   margin-bottom: 30px;
 }
 .infobanner__textblock--opening {
-  margin-bottom: 0;
+  margin-right var(--whitespace);
+  align-items: stretch;
 }
 .infobanner__lists {
   display: flex;
@@ -552,13 +599,15 @@ header {
 .infobanner__days > *,
 .infobanner__hours > * {
   font-size: var(--bodytext);
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Fallback for Firefox Android & Opera Android */
+  margin-bottom: clamp(0.9375rem, 0.7083rem + 1.0185vw, 1.625rem);
   line-height: 100%;
 }
 .infobanner__days {
   font-weight: 600;
 }
 .infobanner__hours {
+  text-align: right;
   font-weight: 400;
   color: var(--whitetrans);
 }
@@ -567,19 +616,87 @@ header {
   margin-bottom: 0;
 }
 .infobanner__title {
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 15px;
 }
 .infobanner__textblock--opening .infobanner__title {
   margin-bottom: 15px; /* Fallback for Firefox Android & Opera Android */
-  margin-bottom: clamp(15px, -73.6352px + 8.6558vw, 51px);
+  margin-bottom: clamp(15px, 11.2496px + 1.0417vw, 20px);
+  /* Using a different margin here as it gives better overall symmetry. */
 }
-.fa-fw.infobanner__icon {
-  /* Higher selector specificity to overrule Font Awesome's fa-fw width rule */
+.infobanner__icon {
+  text-align left !important; /* To overrule FA-FW's inline text-align: center */
+  flex-shrink: 0;
   margin-right: 5px; /* Fallback for Firefox Android & Opera Android */
-  margin-right: clamp(5px, -19.616px + 2.4038vw, 15px);
-  color: var(--turquoise-dark);
-  width: 25px; /* Fallback for Firefox Android & Opera Android */
   font-size: 1.563rem; /* Fallback for Firefox Android & Opera Android */
-  width: clamp(25px, 0.392px + 2.4038vw, 35px); /* Vertical alignment with differently sized icons is hard */
+  margin-right: clamp(0rem, -3.3328px + 0.9259vw, 10px);
+  color: var(--turquoise-dark);
   font-size: clamp(1.563rem, 0.0245rem + 2.4038vw, 2.188rem); /* 25px to 35px */
+}
+
+/* Multicolumn Cards */
+
+.multicol--events {
+  width: 100vw;
+  background: var(--black);
+  color: var(--black);
+}
+.multicol__wrap {
+  background: var(--black);
+}
+.multicol__outerflex {
+  padding: var(--whitespace) 0; /* Vertical padding from 60px to 120px */
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+.multicol__header {
+  color: var(--whiter);
+  padding: var(--sectiontitle) 0;
+  text-shadow: var(--headershadow);
+}
+.multicol__cardslist {
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 5;
+  margin: calc(15px * -1);
+}
+.multicol__card {
+  border-radius: 3px;
+  flex-grow: 1;
+  flex-basis: calc((670px - 100%) * 999);
+  margin: 15px;
+  min-width: 300px;
+  background-color: var(--white);
+  box-shadow: var(--boxshadow);
+}
+.multicol__imgwrap {
+  width: 100%;
+  height: 291px;
+}
+.multicol__img {
+  width: 100%;
+  height: 291px;
+  object-fit: cover;
+  object-position: 50% 40%;
+  border-radius: 3px 3px 0 0;
+}
+.multicol__card--1 .multicol__img {
+  object-position: 50% 20%;
+}
+.multicol__cardtext {
+  display: flex;
+  flex-flow: column;
+  padding: 30px clamp(20px, 35px + -1.3889vw, 30px); /* With negative vw units I make it goes from 30px at mobile to 15px on desktop */
+}
+.multicol__cardtitle {
+  margin-bottom: 15px;
+}
+.multicol__cardbody {
+  line-height: 155.6%;
+  max-width: 85ch;
+}
+.multicol__cardbody span {
+  margin-top: 10px;
+  display: inline-block;
 }

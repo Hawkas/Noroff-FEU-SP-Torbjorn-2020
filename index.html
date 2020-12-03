@@ -5,26 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Community Science Museum</title>
     <meta author="Torbjørn Haukås" />
-    <meta name="description" content="Welcome to the Community Science Museum, Bergen. Join us and experience the frontier of science through our interactive displays and award-winning exhibitions." />
+    <meta
+      name="description"
+      content="Welcome to the Community Science Museum, Bergen. Join us and experience the frontier of science through our interactive displays and award-winning exhibitions."
+    />
     <!-- [1] -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- [2] -->
     <link rel="preload" as="style" href="$CSS&display=swap" />
-
     <!-- [3] -->
     <link rel="stylesheet" href="$CSS&display=swap" media="print" onload="this.media='all'" />
     <!-- [4] -->
     <noscript>
       <link rel="stylesheet" href="$CSS&display=swap" />
     </noscript>
+
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylesheet.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
-    <script src="https://kit.fontawesome.com/ea2405e1e7.js" async crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
+    <header class="fullwidth">
       <nav class="section-container navblock">
         <a href="index.html" class="navblock__logowrap">
           <img class="navblock__logo" src="images/logo-desktop.svg" alt="Our Logo" />
@@ -34,106 +36,175 @@
           <span class="fas fa-bars"></span>
           <span class="navblock__cross">&#x2715;</span>
         </label>
-        <ul class="buttontext navblock__list">
-          <li>
-            <a class="navblock__button" title="Visit" href="visit.html">
-              <span>Visit</span>
-              <span class="fas fa-chevron-right"></span>
-            </a>
-          </li>
-          <li>
-            <a class="navblock__button" title="Exhibits" href="exhibits.html">
-              <span>Exhibits</span>
-              <span class="fas fa-chevron-right"></span>
-            </a>
-          </li>
-          <li>
-            <a class="navblock__button" title="Get Involved" href="getinvolved.html">
-              <span>Get involved</span>
-              <span class="fas fa-chevron-right"></span>
-            </a>
-          </li>
-          <li>
-            <a class="navblock__button" title="About Us" href="aboutus.html">
-              <span>About us</span>
-              <span class="fas fa-chevron-right"></span>
-            </a>
-          </li>
-          <li>
-            <a class="navblock__button" title="Contact Us" href="aboutus.html#contactform">
-              <span>Contact us</span>
-              <span class="fas fa-chevron-right"></span>
-            </a>
-          </li>
-        </ul>
+        <!-- An anchor for the absolutely positioned element, to keep it lined up with the menu bar at all times-->
+        <div class="navblock__relative">
+          <div class="navblock__absolute">
+            <ul class="buttontext navblock__list">
+              <li>
+                <a class="navblock__button" href="visit.html">
+                  <span>Visit</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button" href="exhibits.html">
+                  <span>Exhibits</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button" href="getinvolved.html">
+                  <span>Get involved</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button" href="aboutus.html">
+                  <span>About us</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button" href="aboutus.html#contactform">
+                  <span>Contact us</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </header>
     <main>
       <section class="herobanner herobanner--home">
         <div class="herobanner__imagewrap">
           <picture class="herobanner__gradient">
+            <!-- Images cropped with different aspect ratios, due to need for more height on mobile devices-->
             <source media="(max-width: 767px)" srcset="images/homebanner-768w.jpg 768w" />
-            <source media="(min-width: 768px)" srcset="images/homebanner-2560w.jpg 2560w" />
-            <img class="herobanner__image" src="images/homebanner-2560w.jpg" alt="Young girl in blue clothes, sitting on a stack of books while playing with the solar system" />
+            <source media="(min-width: 768px)" srcset="images/homebanner-2159w.jpg 2159w" />
+            <img
+              class="herobanner__image"
+              src="images/homebanner-2159w.jpg"
+              alt="Young girl in blue clothes, sitting on a stack of books while playing with the solar system"
+            />
           </picture>
         </div>
         <div class="section-container herobanner__textblock">
           <h1 class="herobanner__title herobanner__title--home">Explore&nbsp;the<span>Boundaries</span></h1>
-          <p class="herobanner__bodytext">Join us at the Community Science Museum and explore science in a new and exciting&nbsp;way.</p>
-          <a class="cta cta--turq herobanner__cta" name="Plan your visit" href="visit.html">
+          <p class="herobanner__bodytext">Join us at the Community Science Museum and explore science in a new and <span>exciting way.</span></p>
+          <a class="cta cta--turq herobanner__cta" href="visit.html">
             <span class="buttontext cta__buttontext">Plan your visit</span>
             <span class="fas fa-chevron-right"></span>
           </a>
         </div>
       </section>
-      <section class="infobanner">
-        <div class="section-container infobanner__container">
-          <div class="infobanner__flexbox">
-            <div class="infobanner__block infobanner__block--opening">
-              <span class="far fa-clock fa-fw infobanner__icon infobanner__icon--clock"></span>
-              <div class="infobanner__textblock infobanner__textblock--opening">
-                <h3 class="infobanner__title">Opening&nbsp;hours</h3>
-                <div class="infobanner__lists">
-                  <ol class="infobanner__days">
-                    <li>Mon - Thu:</li>
-                    <li>Fri:</li>
-                    <li>Sat:</li>
-                    <li>Sun:</li>
-                  </ol>
-                  <ol class="infobanner__hours">
-                    <li>&thinsp;10:00&nbsp;-&nbsp;16:00</li>
-                    <li>&thinsp;10:00&nbsp;-&nbsp;19:00</li>
-                    <li>09:00&nbsp;-&nbsp;16:00</li>
-                    <li>09:00&nbsp;-&nbsp;13:00</li>
-                  </ol>
-                </div>
+      <section class="fullwidth infobanner">
+        <div class="infobanner__flexbox">
+          <div class="infobanner__block infobanner__block--opening">
+            <span class="far fa-clock fa-fw infobanner__icon infobanner__icon--clock"></span>
+            <div class="infobanner__textblock infobanner__textblock--opening">
+              <h3 class="infobanner__title">Opening&nbsp;hours</h3>
+              <div class="infobanner__lists">
+                <ol class="infobanner__days">
+                  <li>Mon - Thu:</li>
+                  <li>Fri:</li>
+                  <li>Sat:</li>
+                  <li>Sun:</li>
+                </ol>
+                <ol class="infobanner__hours">
+                  <li><time datetime="10:00">10:00</time>&nbsp;-&nbsp;<time datetime="16:00">16:00</time></li>
+                  <li><time datetime="10:00">10:00</time>&nbsp;-&nbsp;<time datetime="19:00">19:00</time></li>
+                  <li><time datetime="09:00">09:00</time>&nbsp;-&nbsp;<time datetime="16:00">16:00</time></li>
+                  <li><time datetime="09:00">09:00</time>&nbsp;-&nbsp;<time datetime="13:00">13:00</time></li>
+                </ol>
               </div>
             </div>
-            <div class="infobanner__stack">
-              <div class="infobanner__block infobanner__block--entry">
-                <span class="fas fa-coins fa-fw infobanner__icon infobanner__icon--coins"></span>
-                <div class="infobanner__textblock">
-                  <h3 class="infobanner__title">Free entry, with guided tours every&nbsp;hour</h3>
-                  <a class="buttontext buttontext--link infobanner__link" title="Book a tour" href="visit.html#book">
-                    <span>Book a tour</span>
-                    <span class="fas fa-chevron-right"></span>
-                  </a>
-                </div>
+          </div>
+          <div class="infobanner__stack">
+            <div class="infobanner__block infobanner__block--entry">
+              <span class="fas fa-coins fa-fw infobanner__icon infobanner__icon--coins"></span>
+              <div class="infobanner__textblock">
+                <h3 class="infobanner__title">Free entry, with guided tours every&nbsp;hour</h3>
+                <a class="buttontext buttontext--link infobanner__link" href="visit.html#book">
+                  <span>Book a tour</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
               </div>
-              <div class="infobanner__block infobanner__block--location">
-                <span class="fas fa-map-marker-alt fa-fw infobanner__icon infobanner__icon--map"></span>
-                <div class="infobanner__textblock">
-                  <h3 class="infobanner__title">Vestre Torggaten&nbsp;9, 5015&nbsp;Bergen</h3>
-                  <a class="buttontext buttontext--link infobanner__link" title="Get directions" href="visit.html#book">
-                    <span>Get directions</span>
-                    <span class="fas fa-chevron-right"></span>
-                  </a>
-                </div>
+            </div>
+            <div class="infobanner__block infobanner__block--location">
+              <span class="fas fa-map-marker-alt fa-fw infobanner__icon infobanner__icon--map"></span>
+              <div class="infobanner__textblock">
+                <h3 class="infobanner__title">Vestre Torggaten&nbsp;9, 5015&nbsp;Bergen</h3>
+                <a class="buttontext buttontext--link infobanner__link" href="visit.html#book">
+                  <span>Get directions</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <section class="pagewidth multicol multicol--events">
+        <div class="section-container multicol__wrap">
+          <div class="multicol__outerflex">
+            <h2 class="multicol__header">Special events</h2>
+            <ul class="multicol__cardslist">
+              <li class="multicol__card multicol__card--1">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    srcset="images/aeronautics-379w@1x.jpg, images/aeronautics-758w@2x.jpg 2x, images/aeronautics-1137w@3x.jpg 3x"
+                    src="images/aeronautics-758w@2x.jpg"
+                    alt="Aeronautics Exhibition of a pressure suit previously worn by high-altitude pilots"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h4 class="multicol__cardtitle">Visiting Professor of Aeronautics</h4>
+                  <p class="multicol__cardbody">
+                    It is our pleasure to announce that Prof Sheila Widnall from the Massachusetts Institute of Technology will be delivering 3
+                    lectures on the development of aeronautics and where the future lies in this exciting ‘space’.
+                  </p>
+                </div>
+              </li>
+              <li class="multicol__card multicol__card--2">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    srcset="images/night-379w@1x.jpg, images/night-758w@2x.jpg 2x, images/night-1137w@3x.jpg 3x"
+                    src="images/night-758w@2x.jpg"
+                    alt="Museum exhibitions at night, particularly a bicycle and a glowing sphere"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h4 class="multicol__cardtitle">Spend a night in the Museum</h4>
+                  <p class="multicol__cardbody">
+                    Get your family together for an exciting night in the museum as you sleep over beside dinosaurs and science displays.
+                    <span>Bring your own sleeping bag and get ready to rough it as we go exploring the wonders of science.</span>
+                  </p>
+                </div>
+              </li>
+              <li class="multicol__card multicol__card--3">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    srcset="images/energetica-758w@2x.jpg, images/energetica-1137w@3x.jpg 3x"
+                    src="images/energetica-758w@2x.jpg"
+                    alt="Young girl in lab coat studying an exhibition that I assume has to do with power generation or at least I hope so"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h4 class="multicol__cardtitle">Energetica Exhibition on Loan</h4>
+                  <p class="multicol__cardbody">
+                    On loan from the NEMO Science Museum in Amsterdam, the Energetica exhibition is coming to the Community Science Museum.
+                    <span>It’s a series of installations that allow visitors to experience the power of the elements as we harness them.</span>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
+    <script src="https://kit.fontawesome.com/ea2405e1e7.js" crossorigin="anonymous"></script>
   </body>
 </html>
