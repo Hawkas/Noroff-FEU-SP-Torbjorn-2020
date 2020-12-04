@@ -558,7 +558,7 @@ header {
 }
 
 .infobanner__flexbox {
-  padding: var(--whitespace) var(--paddingless) var(--whitespace) clamp(15px, -2.6672px + 4.9074vw, 68px);
+  padding: 60px var(--paddingless) 60px clamp(15px, -2.6672px + 4.9074vw, 68px);
   width: 100vw;
   max-width: 1440px;
   margin: 0 auto;
@@ -645,7 +645,7 @@ header {
   background: var(--black);
 }
 .multicol__outerflex {
-  padding: var(--whitespace) 0; /* Vertical padding from 60px to 120px */
+  padding: 60px 0; /* Vertical padding from 60px to 120px */
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
@@ -687,7 +687,7 @@ header {
 .multicol__cardtext {
   display: flex;
   flex-flow: column;
-  padding: 30px clamp(20px, 35px + -1.3889vw, 30px); /* With negative vw units I make it goes from 30px at mobile to 15px on desktop */
+  padding: 30px clamp(20px, 35px + -1.3889vw, 30px); /* With negative vw units I make it go from 30px at mobile to 15px on desktop */
 }
 .multicol__cardtitle {
   margin-bottom: 15px;
