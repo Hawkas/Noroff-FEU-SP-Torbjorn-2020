@@ -119,10 +119,10 @@ body {
   --exo: "Exo 2", Arial, sans-serif; /* Fallbacks in-case clamp doesnt work */
   --footertos: 0.875rem;
   --h1: 2.5rem;
-  --h2: 2rem;
-  --h3: 1.5rem;
-  --h4: 1.5rem;
-  --h5: 1.313rem;
+  --sectiontitle: 2rem;
+  --cardtitle: 1.5rem;
+  --slimtitle: 1.5rem;
+  --footertitle: 1.313rem;
   --bodytext: 1rem;
   --footerbody: 0.875rem;
   --buttontext: 1.125rem;
@@ -130,13 +130,13 @@ body {
   --paddington: 45px; /* Fallbacks for clamp variables */
   --paddingless: 15px; /* -------=====-------*/
   --iconpadding: 15px; /* -------=====-------*/
-  --whitespace: 60px;  /* -------=====-------*/
-  --sectiontitle: 30px;/* -------=====-------*/
+  --whitespace: 60px; /* -------=====-------*/
+  --sectionpadding: 30px; /* -------=====-------*/
   --paddington: clamp(45px, 19.344px + 7.1289vw, 122px);
   --paddingless: clamp(15px, -20.6672px + 9.9074vw, 122px);
   --iconpadding: clamp(15px, -2.6672px + 4.9074vw, 68px);
   --whitespace: clamp(60px, 15px + 12.5vw, 120px);
-  --sectiontitle: clamp(30px, -43.8464px + 7.2115vw, 60px);
+  --sectionpadding: clamp(30px, -43.8464px + 7.2115vw, 60px);
   /* Shadow variables */
   --headershadow: 0px 5.65789px 4.52632px rgba(0, 0, 0, 0.5);
   --boxshadow: 4px 6px 8px rgba(0, 0, 0, 0.25);
@@ -145,10 +145,10 @@ body {
   /* Fallbacks in-case clamp doesnt work */
   :root {
     --h1: 3.679rem;
-    --h2: 2.519rem;
-    --h3: 1.782rem;
-    --h4: 1.571rem;
-    --h5: 1.383rem;
+    --sectiontitle: 2.519rem;
+    --cardtitle: 1.782rem;
+    --slimtitle: 1.571rem;
+    --footertitle: 1.383rem;
     --bodytext: 1.125rem;
     --footerbody: 1rem;
     --buttontext: 1.25rem;
@@ -158,19 +158,19 @@ body {
   /* Fallbacks in-case clamp doesnt work */
   :root {
     --h1: 5.625rem;
-    --h2: 3.375rem;
-    --h3: 2.25rem;
-    --h4: 1.688rem;
-    --h5: 1.5rem;
+    --sectiontitle: 3.375rem;
+    --cardtitle: 2.25rem;
+    --slimtitle: 1.688rem;
+    --footertitle: 1.5rem;
   }
 }
 @supports (font-size: clamp(1rem, 2vw, 3rem)) {
   :root {
     --h1: clamp(2.5rem, 1.4583rem + 4.6296vw, 5.625rem); /* Linear scaling from 40px to 90px */
-    --h2: clamp(2rem, 1.5417rem + 2.037vw, 3.375rem); /* from 32px to 54px */
-    --h3: clamp(1.5rem, 1.25rem + 1.1111vw, 2.25rem); /* from 24px to 36px */
-    --h4: clamp(1.5rem, 1.4373rem + 0.2785vw, 1.688rem); /* from 24px to 27px */
-    --h5: clamp(1.313rem, 1.2507rem + 0.277vw, 1.5rem); /* From 21px to 24px */
+    --sectiontitle: clamp(2rem, 1.5417rem + 2.037vw, 3.375rem); /* from 32px to 54px */
+    --cardtitle: clamp(1.5rem, 1.25rem + 1.1111vw, 2.25rem); /* from 24px to 36px */
+    --slimtitle: clamp(1.5rem, 1.4373rem + 0.2785vw, 1.688rem); /* from 24px to 27px */
+    --footertitle: clamp(1.313rem, 1.2507rem + 0.277vw, 1.5rem); /* From 21px to 24px */
     --bodytext: clamp(1rem, 0.8897rem + 0.4902vw, 1.125rem); /* from 16px to 18px */
     --footerbody: clamp(0.875rem, 0.8333rem + 0.1852vw, 1rem); /* from 14px to 16px */
     --buttontext: clamp(1.125rem, 1.0833rem + 0.1852vw, 1.25rem); /* from 18px to 20px */
@@ -190,23 +190,39 @@ h1 > span {
   display: block;
   letter-spacing: 0.045em;
 }
-h2 {
-  font-size: var(--h2);
+.sectiontitle {
+  font-size: var(--sectiontitle);
   font-weight: 800;
+  color: var(--whiter);
+  padding: var(--sectionpadding) 0;
+  text-shadow: var(--headershadow);
 }
-h3 {
-  font-size: var(--h3);
+.infobanner__title,
+.multicol__cardtitle,
+.singlecol__cardtitle {
+  font-size: var(--cardtitle);
   font-weight: 700;
   line-height: 100%;
 }
-h4 {
-  font-size: var(--h4);
+.multicol--events .multicol__cardtitle {
+  /* Slimming these down since the titles are so long */
+  font-size: var(--slimtitle);
   font-weight: 700;
   line-height: 100%;
 }
-h5 {
-  font-size: var(--h5);
+.footer__title {
+  font-size: var(--footertitle);
   font-weight: 600;
+}
+.footer__policytos {
+  font-size: var(--footertos);
+  font-weight: 400;
+  line-height: 100%;
+}
+.footer__copyright {
+  font-size: 0.6875rem;
+  font-weight: 300;
+  color: var(--whitetrans);
 }
 a {
   color: inherit;
@@ -215,13 +231,15 @@ a {
   color: var(--orange);
   font-size: var(--buttontext);
   font-weight: 600;
+  line-height: 100%;
 }
 span {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
 }
-.buttontext, .cta {
+.buttontext,
+.cta {
   font-size: var(--buttontext);
   font-weight: 700;
   line-height: 160%;
@@ -238,11 +256,31 @@ h1,
 h2,
 h3,
 h4,
-h5,
-.buttontext, .cta, .links {
+.buttontext,
+.cta,
+.links {
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
+.footer__list--days,
+.footer__link,
+.footer__address {
+  font-weight: 500;
+}
+.footer__list--hours {
+  text-align: right;
+  font-weight: 400;
+  color: var(--whitetrans);
+}
+.footer__address,
+.footer__timelist {
+  font-size: var(--footerbody);
+}
+.footer__title ~ *,
+.footer__link {
+  line-height: 160%;
+}
+
 /*? Universal Components */
 
 /* To align content along the same linearly scaling margin*/
@@ -255,11 +293,7 @@ h5,
   width: 100%;
   max-width: 1440px;
 }
-.sectiontitle {
-  color: var(--whiter);
-  padding: var(--sectiontitle) 0;
-  text-shadow: var(--headershadow);
-}
+
 /* Buttons */
 .cta {
   color: var(--black);
@@ -281,7 +315,8 @@ h5,
 .cta--orange {
   background-color: var(--orange);
 }
-.cta--turq:hover, .cta--turq:focus {
+.cta--turq:hover,
+.cta--turq:focus {
   background-color: var(--black);
   color: var(--whiter);
   border-bottom: 3px solid var(--whiter);
@@ -290,16 +325,16 @@ h5,
 .cta--turq:focus .fas {
   transform: translateX(5px);
 }
-.cta--orange:hover, .cta--orange:focus {
+.cta--orange:hover,
+.cta--orange:focus {
   background-color: rgba(234, 134, 43, 0.6);
   text-decoration: underline;
 }
 /* Links */
-.links {
+
+.infobanner__link {
   display: flex;
-  line-height: 100%;
   align-items: baseline;
-  color: var(--orange);
 }
 .links .fas {
   margin-left: 7px;
@@ -314,6 +349,17 @@ h5,
 .links:focus .fas {
   transform: translateX(10px);
   transition: transform 250ms ease-in-out;
+}
+.footer__link {
+  letter-spacing: 0;
+  font-size: var(--bodytext);
+  text-transform: capitalize;
+}
+.footer__link:hover,
+.footer__link:focus,
+.footer__tinylink:hover,
+.footer__tinylink:focus {
+  text-decoration: underline;
 }
 /*!----------HEADER------------*/
 header {
@@ -349,12 +395,11 @@ header {
 .navblock__logowrap:focus::after {
   transform: scale(1, 1);
 }
-.navblock__logowrap, .navblock__dropdown {
+.navblock__logowrap,
+.navblock__dropdown {
   margin: 24px 15px; /* Fallback for Firefox Android & Opera Android */
   margin: clamp(23px, 1vw, 36.5px) var(--iconpadding);
 }
-
-
 
 /* Dropdown menu checkbox hack stuff */
 .navblock__toggle,
@@ -426,9 +471,9 @@ header {
   .navblock__button > .fas {
     margin-left: auto; /* Rather than space-between, doing it like this makes the content behave properly when it is shrunk */
   }
-.navblock__toggle:checked ~ .navblock__relative .navblock__absolute {
-  transform: scale(1);
-}
+  .navblock__toggle:checked ~ .navblock__relative .navblock__absolute {
+    transform: scale(1);
+  }
   .navblock__toggle:checked ~ .navblock__dropdown .navblock__cross,
   .fa-bars {
     transform: scale(1);
@@ -603,7 +648,7 @@ header {
   margin-bottom: 30px;
 }
 .infobanner__textblock--opening {
-  margin-right var(--whitespace);
+  margin-right: var(--whitespace);
   align-items: stretch;
 }
 .infobanner__lists {
@@ -711,7 +756,6 @@ header {
   margin-top: 15px;
 }
 
-
 /* Singlecolumn Cards */
 
 .singlecol--explore {
@@ -721,7 +765,7 @@ header {
   z-index: 2;
 }
 .singlecol--explore::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -733,7 +777,7 @@ header {
   background-size: cover;
 }
 .singlecol--explore::after {
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   position: absolute;
@@ -741,7 +785,7 @@ header {
   right: 0;
   left: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(21, 29, 34, 0.1) 0%, #151D22 13.5%, #313641 100%);
+  background: linear-gradient(180deg, rgba(21, 29, 34, 0.1) 0%, #151d22 13.5%, #313641 100%);
 }
 
 .singlecol__container {
@@ -760,7 +804,8 @@ header {
   flex-grow: 1;
   flex-basis: calc((800px - 100%) * 999);
 }
-.singlecol__card--1, .singlecol__card--2 {
+.singlecol__card--1,
+.singlecol__card--2 {
   margin-bottom: 30px;
 }
 .singlecol__cardtext {
@@ -795,8 +840,9 @@ header {
   .singlecol__imgwrap {
     max-height: 100%;
   }
-  
-  .singlecol__imgwrap--forkids, .singlecol__cardtext {
+
+  .singlecol__imgwrap--forkids,
+  .singlecol__cardtext {
     flex-basis: 49.3311036789%;
     max-width: 590px;
   }
@@ -840,50 +886,30 @@ header {
   display: flex;
   margin-right: auto; /* This is only for flexitem--involved and --opening */
   flex-grow: 1; /* To keep items within columns equal */
-  max-width: clamp(10.44rem, 9.9600rem + 2.1333vw, 11.88rem); /* To center */
-  flex-flow: column; 
+  max-width: clamp(10.44rem, 9.96rem + 2.1333vw, 11.88rem); /* To center */
+  flex-flow: column;
 }
-.footer__flexitem--follow, .footer__flexitem--location {
+.footer__flexitem--follow,
+.footer__flexitem--location {
   max-width: clamp(117.008px, 6.9797rem + 1.4815vw, 133.008px);
   margin-left: auto;
   margin-right: clamp(46px, -0.3025rem + 14.1221vw, 120px);
 }
-.footer__timelist {
-  max-width: clamp(10.44rem, 9.9600rem + 2.1333vw, 11.88rem); /* To keep the lists contained under title */
+.footer__list > * {
+  margin-bottom: 7px;
 }
 .footer__timelist {
-  font-size: var(--footerbody);
+  max-width: clamp(10.44rem, 9.96rem + 2.1333vw, 11.88rem); /* To keep the lists contained under title */
+}
+.footer__timelist {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.footer__list > * {
-  margin-bottom: 7px;
-  font-weight: 500;
-}
-.footer__list--hours {
-  text-align: right;
-  font-weight: 400;
-  color: var(--whitetrans);
-}
+
+.footer__title,
 .footer__address {
-  font-weight: 500;
-  font-size: var(--footerbody);
-}
-.footer__title, .footer__address {
   margin-bottom: 15px;
-}
-.footer__title ~ *, .footer__link {
-  line-height: 160%;
-}
-.footer__link {
-  letter-spacing: 0;
-  font-size: var(--bodytext);
-  font-weight: 500;
-  text-transform: capitalize;
-}
-.footer__link:hover, .footer__link:focus {
-  text-decoration: underline;
 }
 
 .footer__social {
@@ -892,11 +918,13 @@ header {
   font-size: clamp(1.688rem, 1.5213rem + 0.7407vw, 2.188rem);
   color: var(--turquoise-dark);
 }
-.footer__social .fab:hover, .footer__social .fab:focus {
- color: var(--turquoise);
-} 
-.footer__social .fab:hover::after, .footer__social .fab:focus::after {
-  content: '';
+.footer__social .fab:hover,
+.footer__social .fab:focus {
+  color: var(--turquoise);
+}
+.footer__social .fab:hover::after,
+.footer__social .fab:focus::after {
+  content: "";
   display: block;
   height: 3px;
   width: 100%;
@@ -916,22 +944,15 @@ header {
   width: 100%;
 }
 .footer__policytos {
-  font-size: var(--footertos);
-  font-weight: 400;
-  line-height: 100%; 
   display: flex;
   margin-bottom: 25px;
 }
-.footer__copyright {
-  font-size: 0.6875rem;
-  font-weight: 300;
-  color: var(--whitetrans);
-}
+
 .footer__tinylink:nth-of-type(2) {
   padding: 0 45px;
 }
-.footer__tinylink:hover, .footer__tinylink:focus {
-  text-decoration: underline;
+.footer__tinylink:hover,
+.footer__tinylink:focus {
   color: var(--whitetrans);
 }
 .footer__line {
@@ -941,25 +962,22 @@ header {
   margin-bottom: 30px;
 }
 @media only screen and (min-width: 883.5px) {
-.footer__topblock--1 {
-  flex: none;
-  margin-left: auto;
+  .footer__topblock--1 {
+    flex: none;
+    margin-left: auto;
+  }
+  .footer__topblock--2 {
+    flex: none;
+    margin-right: auto;
+  }
+  .footer__flexitem {
+    flex-grow: 0;
+    margin: 0 clamp(30px, -3.0935rem + 8.9928vw, 80px) 0 0;
+  }
+  .footer__flexitem--opening {
+    margin-right: 0;
+  }
+  .footer__flexitem--location {
+    max-width: clamp(110px, 100px + 1vw, 115px);
+  }
 }
-.footer__topblock--2 {
-  flex: none;
-  margin-right: auto;
-}
-.footer__flexitem {
-  flex-grow: 0;
-  margin: 0 clamp(30px, -3.0935rem + 8.9928vw, 80px) 0 0;
-}
-.footer__flexitem--opening {
-  margin-right: 0;
-}
-.footer__flexitem--location {
-  max-width: clamp(110px, 100px + 1vw, 115px);
-}
-
-}
-
-
