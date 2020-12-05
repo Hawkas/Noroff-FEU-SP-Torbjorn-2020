@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Get Involved - Community Science Museum</title>
-    <meta author="Torbjørn Haukås" />
+    <meta name="author" content="Torbjørn Haukås" />
     <meta
       name="description"
       content="Help us share the excitement and wonders of nature. Support us by donating or by volunteering to keep the museum in good condition."
@@ -22,5 +22,120 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body></body>
+  <body>
+    <header class="fullwidth">
+      <nav class="section-container navblock">
+        <a href="index.html" class="navblock__logowrap">
+          <img class="navblock__logo" src="images/logo-desktop.svg" alt="Our Logo" />
+        </a>
+        <input type="checkbox" name="checkbox-hack" id="hamburger" class="navblock__toggle" />
+        <label class="navblock__dropdown" title="Menu" for="hamburger">
+          <span class="fas fa-bars"></span>
+          <span class="navblock__cross">&#x2715;</span>
+        </label>
+        <!-- An anchor for the absolutely positioned element, to keep it lined up with the menu bar at all times-->
+        <div class="navblock__relative">
+          <div class="navblock__absolute">
+            <ul class="buttontext navblock__list">
+              <li>
+                <a class="navblock__button" href="visit.html">
+                  <span>Visit</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button" href="exhibits.html">
+                  <span>Exhibits</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button navblock__button--active" href="getinvolved.html">
+                  <span>Get involved</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button" href="aboutus.html">
+                  <span>About us</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+              <li>
+                <a class="navblock__button" href="aboutus.html#contactform">
+                  <span>Contact us</span>
+                  <span class="fas fa-chevron-right"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      
+    </main>
+    <footer class="pagewidth footer">
+      <div class="section-container footer__container">
+        <div class="footer__top">
+          <div class="footer__topblock footer__topblock--1">
+            <div class="footer__flexitem footer__flexitem--follow">
+              <h5 class="footer__title">Follow&nbsp;Us</h5>
+              <div class="footer__social">
+                <span class="fab fa-facebook-square"></span><span class="fab fa-twitter-square"></span><span class="fab fa-instagram"></span>
+              </div>
+            </div>
+            <div class="footer__flexitem footer__flexitem--involved">
+              <h5 class="footer__title">Get&nbsp;Involved</h5>
+              <ul class="footer__list">
+                <li>
+                  <a href="getinvolved.html#donate" class="links footer__link">Donate</a>
+                </li>
+                <li>
+                  <a href="getinvolved.html#volunteer" class="links footer__link">Volunteer</a>
+                </li>
+                <li>
+                  <a href="getinvolved.html#internships" class="links footer__link">Internships</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer__topblock footer__topblock--2">
+            <div class="footer__flexitem footer__flexitem--location">
+              <h5 class="footer__title">Location</h5>
+              <p class="footer__address">Vestre Torggaten&nbsp;9, 5015&nbsp;Bergen</p>
+              <a href="visit.html" class="links footer__link">Getting Here</a>
+            </div>
+            <div class="footer__flexitem footer__flexitem--opening">
+              <h5 class="footer__title">Opening&nbsp;Hours</h5>
+              <div class="footer__timelist">
+                <ol class="footer__list footer__list--days">
+                  <li>Mon - Thu:</li>
+                  <li>Fri:</li>
+                  <li>Sat:</li>
+                  <li>Sun:</li>
+                </ol>
+                <ol class="footer__list footer__list--hours">
+                  <li><time datetime="10:00">10:00</time>&nbsp;-&nbsp;<time datetime="16:00">16:00</time></li>
+                  <li><time datetime="10:00">10:00</time>&nbsp;-&nbsp;<time datetime="19:00">19:00</time></li>
+                  <li><time datetime="09:00">09:00</time>&nbsp;-&nbsp;<time datetime="16:00">16:00</time></li>
+                  <li><time datetime="09:00">09:00</time>&nbsp;-&nbsp;<time datetime="13:00">13:00</time></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__line"></div>
+        <div class="footer__bottom">
+          <div class="footer__policytos">
+            <span class="footer__tinylink">Privacy&nbsp;Policy</span>
+            <span class="footer__tinylink">Terms&nbsp;of&nbsp;Use</span>
+            <a href="aboutus.html#contactus" class="footer__tinylink">Contact&nbsp;Us</a>
+          </div>
+          <span class="footer__copyright">&copy; 2020 Community Science Museum</span>
+        </div>
+      </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/ea2405e1e7.js" crossorigin="anonymous"></script>
+  </body>
 </html>

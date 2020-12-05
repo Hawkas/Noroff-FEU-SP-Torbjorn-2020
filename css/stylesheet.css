@@ -369,7 +369,7 @@ header {
   }
   .navblock__absolute {
     position: absolute;
-    z-index: 2;
+    z-index: 5;
     top: 0;
     transform: scale(1, 0);
     transition: transform 400ms ease-in-out;
@@ -639,11 +639,11 @@ header {
   /* Using a different margin here as it gives better overall symmetry. */
 }
 .infobanner__icon {
-  text-align left !important; /* To overrule FA-FW's inline text-align: center */
-  flex-shrink: 0;
-  margin-right: 5px; /* Fallback for Firefox Android & Opera Android */
+  text-align: left !important; /* To overrule FA-FW's inline text-align: center */
+  flex-shrink: 0; /* Icons will have uneven widths if set to shrink */
+  margin-right: 0px; /* Fallback for Firefox Android & Opera Android */
   font-size: 1.563rem; /* Fallback for Firefox Android & Opera Android */
-  margin-right: clamp(0rem, -3.3328px + 0.9259vw, 10px);
+  margin-right: clamp(0px, -3.3328px + 0.9259vw, 10px);
   color: var(--turquoise-dark);
   font-size: clamp(1.563rem, 0.0245rem + 2.4038vw, 2.188rem); /* 25px to 35px */
 }
