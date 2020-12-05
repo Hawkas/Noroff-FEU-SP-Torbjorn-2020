@@ -932,6 +932,7 @@ header {
 }
 .footer__tinylink:hover, .footer__tinylink:focus {
   text-decoration: underline;
+  color: var(--whitetrans);
 }
 .footer__line {
   height: 2px;
