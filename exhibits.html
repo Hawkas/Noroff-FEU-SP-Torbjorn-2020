@@ -6,18 +6,25 @@
     <title>Exhibitions - Community Science Museum</title>
     <meta name="author" content="Torbjørn Haukås" />
     <meta name="description" content="See and read about some of our most popular exhibits" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300..900&display=swap" rel="stylesheet" />
+    <!-- [1] -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- [2] -->
+    <link rel="preload" as="style" href="$CSS&display=swap" />
+    <!-- [3] -->
+    <link rel="stylesheet" href="$CSS&display=swap" media="print" onload="this.media='all'" />
+    <!-- [4] -->
+    <noscript><link rel="stylesheet" href="$CSS&display=swap" /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/stylesheet.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
-    <script src="https://kit.fontawesome.com/ea2405e1e7.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header class="fullwidth">
+    <header>
       <nav class="section-container navblock">
-        <a href="index.html" class="navblock__logowrap">
-          <img class="navblock__logo" src="images/logo-desktop.svg" alt="Our Logo" />
+        <a href="index.html" title="Home" class="navblock__logowrap">
+          <img class="navblock__logo" src="images/logo-desktop.svg" alt="Community Science Museum's Logo" />
         </a>
         <input type="checkbox" name="checkbox-hack" id="hamburger" class="navblock__toggle" />
         <label class="navblock__dropdown" title="Menu" for="hamburger">
@@ -29,33 +36,33 @@
           <div class="navblock__absolute">
             <ul class="buttontext navblock__list">
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="visit.html">
-                  <span>Visit</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Visit<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button navblock__button--active" href="exhibits.html">
-                  <span>Exhibits</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Exhibits<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="getinvolved.html">
-                  <span>Get involved</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Get Involved<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="aboutus.html">
-                  <span>About us</span>
-                  <span class="fas fa-chevron-right"></span>
+                  About Us<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="aboutus.html#contactform">
-                  <span>Contact us</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Contact Us<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
             </ul>
@@ -63,15 +70,157 @@
         </div>
       </nav>
     </header>
-    <main></main>
-    <footer class="pagewidth footer">
+    <main class="herobanner herobanner--mod">
+      <picture class="herobanner__imagewrap">
+        <source media="(max-width: 767px)" srcset="images/exhibits-768w.jpg" />
+        <source media="(min-width: 768px)" srcset="images/exhibits-1440w.jpg" />
+        <img
+          class="herobanner__image"
+          src="images/exhibits-1440w.jpg"
+          alt="Schoolboy in science museum having fun with the human gyroscope"
+        />
+      </picture>
+      <h1 class="section-container herobanner__textblock">Popular<span>Exhibits</span></h1>
+      <div class="multicol multicol--exhibits">
+        <div class="section-container multicol__wrap multicol__wrap--exhibits">
+          <div class="multicol__outerflex">
+            <div class="multicol__cardblock multicol__cardblock--duo">
+              <article class="multicol__card multicol__card--exhib1">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    src="images/evolution-1080w.jpg"
+                    alt="Skeletal remains of a tyrannosaurus in a museum"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h2 class="multicol__cardtitle">Evolution</h2>
+                  <div class="multicol__cardbody">
+                    <p>
+                      For centuries, philosophers and scientists have wrestled with the question of our origins. Where do we come
+                      from and how did we get here? Since Darwin proposed his theory of evolution we have had a framework for
+                      exploring and understanding our place in this&nbsp;world.
+                    </p>
+                    <p>
+                      Discover the origins of life on this planet and how the species we know today have evolved our time. You can
+                      also take some time to meet a few of the creatures who didn’t survive, including our Woolly Mammoth, the
+                      Dodos, and a number of dinosaurs&nbsp;too.
+                    </p>
+                  </div>
+                </div>
+              </article>
+              <article class="multicol__card multicol__card--exhib2">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    src="images/biology-1080w.jpg"
+                    alt="Transparent plastic model of a human skull in a display box"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h2 class="multicol__cardtitle">Biology and Medicine</h2>
+                  <div class="multicol__cardbody">
+                    <p>
+                      From micro-organisms to the human body, major breakthroughs in biology are offering us unique insights into
+                      the great wonders of the tiny&nbsp;world.
+                    </p>
+                    <p>
+                      For many people their life expectancy is much longer and their quality of life much improved, thanks to the
+                      growth of our understanding of medicine. Over a series of exhibits we explore the history of medicine and
+                      take a look at some major breakthroughs including the discovery of penicillin and the first
+                      heart&nbsp;transplant.
+                    </p>
+                    <p>
+                      Many of our great medicinal discoveries have come not only from the lab, but also from observing animals in
+                      the wild. Often our fellow creatures have beat us&nbsp;to&nbsp;it.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="multicol__cardblock">
+              <article class="multicol__card multicol__card--exhib3">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    src="images/robotics-1080w.jpg"
+                    alt="Robotic arm used for automation in car industry, on display in a museum"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h2 class="multicol__cardtitle">Robotics and AI</h2>
+                  <div class="multicol__cardbody">
+                    <p>
+                      The information revolution is here and robotics and artificial intelligence are the science of
+                      the&nbsp;future.
+                    </p>
+                    <p>
+                      From useful home applications of AI to industrial uses of robotics, the future is here. You can even say
+                      hello and shake the hand of Rob&nbsp;the&nbsp;Robot.
+                    </p>
+                  </div>
+                </div>
+              </article>
+              <article class="multicol__card multicol__card--exhib4">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    src="images/ecology-1080w.jpg"
+                    alt="Skeletal remains of a tyrannosaurus in a museum"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h2 class="multicol__cardtitle">Ecology</h2>
+                  <div class="multicol__cardbody">
+                    <p>
+                      As we learn more and more of the impact humans are having on the planet, the more important it becomes that
+                      scientists explore how to create a sustainable future not just for humans but for the whole&nbsp;planet.
+                    </p>
+                    <p>
+                      In our ecology section of the museum, we unpack the dangers we currently face including global warming,
+                      extinction of species, and pollution. But we also focus on the positive ways we can all contribute to a
+                      brighter&nbsp;future.
+                    </p>
+                  </div>
+                </div>
+              </article>
+              <article class="multicol__card multicol__card--exhib5">
+                <div class="multicol__imgwrap">
+                  <img
+                    class="multicol__img"
+                    src="images/cosmology-1080w.jpg"
+                    alt="Skeletal remains of a tyrannosaurus in a museum"
+                  />
+                </div>
+                <div class="multicol__cardtext">
+                  <h2 class="multicol__cardtitle">Cosmology</h2>
+                  <div class="multicol__cardbody">
+                    <p>
+                      Explore the wonders of our cosmos. Our fantastic exhibition, ‘The Sky Above Us’, explores the night sky and
+                      what we can see and know about the universe around us. We’ll locate the various constellations and galaxies
+                      that can be seen and learn a bit about the early navigators who used the stars to travel&nbsp;by.
+                    </p>
+                    <p>
+                      Follow the journey of our solar exploration: from early Arab traders, to Galileo’s telescope, to the latest
+                      exploration of the planets in our solar&nbsp;system.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
       <div class="section-container footer__container">
         <div class="footer__top">
           <div class="footer__topblock footer__topblock--1">
             <div class="footer__flexitem footer__flexitem--follow">
               <h4 class="footer__title">Follow&nbsp;Us</h4>
               <div class="footer__social">
-                <span class="fab fa-facebook-square"></span><span class="fab fa-twitter-square"></span><span class="fab fa-instagram"></span>
+                <span class="fab fa-facebook-square"></span><span class="fab fa-twitter-square"></span
+                ><span class="fab fa-instagram"></span>
               </div>
             </div>
             <div class="footer__flexitem footer__flexitem--involved">

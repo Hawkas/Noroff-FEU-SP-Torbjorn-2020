@@ -103,6 +103,8 @@ html {
 }
 body {
   background-color: var(--black);
+  width: 100%;
+  min-width: 300px;
 }
 /* Color styles (extracted from Figma)*/
 :root {
@@ -285,9 +287,7 @@ h4,
 /*? Universal Components */
 
 /* To align content along the same linearly scaling margin*/
-.fullwidth {
-  width: 100vw;
-}
+
 .section-container {
   padding: 0 var(--paddingless);
   margin: 0 auto;
@@ -365,7 +365,6 @@ h4,
 /*!----------HEADER------------*/
 header {
   background-color: var(--black);
-  z-index: 2;
 }
 .navblock {
   padding: 0;
@@ -379,15 +378,18 @@ header {
   height: clamp(28px, 19.344px + 2.1289vw, 50px);
   width: auto;
 }
+.navblock__logowrap {
+  position: relative;
+}
 .navblock__logowrap::after {
   content: "";
   background-color: var(--white);
   height: 3px;
-  position: relative;
-  top: 0;
+  display: inline-block;
+  position: absolute;
+  bottom: -3px;
   left: 0;
   right: 0;
-  display: block;
   transform: scale(0, 1);
   transform-origin: left;
   transition: transform 500ms ease-in-out;
@@ -411,13 +413,14 @@ header {
   /* Keeping this in a media query since checkbox hack requires high specificity selectors and DRY i guess*/
   .navblock__relative {
     position: relative;
-    width: 100%; /* Essential to keep block anchored below */
+    width: 100%;
   }
   .navblock__absolute {
     position: absolute;
     z-index: 5;
     top: 0;
     transform: scale(1, 0);
+    width: 100%;
     transition: transform 400ms ease-in-out;
     transform-origin: top;
   }
@@ -431,14 +434,11 @@ header {
     border-top: 3px solid var(--light-dark);
     transition: transform 400ms ease-in-out;
     transform-origin: top;
-    height: 100%;
     position: relative; /* Using positioning to make the menu overlap site content and not shuffle things around */
-    width: 100vw;
   }
   .navblock__button {
     display: flex;
     align-items: center;
-    width: 100%;
     border-bottom: 2px solid var(--light-dark);
     padding: 30px 45px; /* Fallback for Firefox Android & Opera Android */
     padding: 30px var(--paddingless) 30px var(--paddington);
@@ -450,6 +450,13 @@ header {
     /* Useless since hover wouldnt work on mobile anyway. Just in case someone is viewing this on a pc */
     background-color: var(--light-dark);
     border-bottom: 2px solid var(--white);
+  }
+  .navblock__button--active:hover,
+  .navblock__button--active:focus,
+  .navblock__button--active {
+    background-color: var(--whitetrans);
+    color: var(--black);
+    border-bottom: none;
   }
   .navblock__dropdown {
     position: relative;
@@ -518,12 +525,10 @@ header {
     align-items: center;
   }
   .navblock__logowrap {
-    margin-right: clamp(80.78px, -286.6704px + 35.8077vw, 230px); /* Just to have the menu items more on the left on  */
-  } /* wider screens and still allow space-between to regulate spacing*/
-  .navblock__button {
-    position: relative;
+    padding-right: 0;
+    margin-right: clamp(80.78px, -286.6704px + 35.8077vw, 230px);
   }
-  .navblock__button span::after {
+  .navblock__button::after {
     content: "";
     display: block;
     background: var(--white);
@@ -533,95 +538,121 @@ header {
     transform-origin: left;
     transition: transform 350ms ease-in-out;
   }
-  .navblock__button:hover span::after {
+  .navblock__button--active {
+    color: var(--whitetrans);
+  }
+  .navblock__button--active::after {
+    transform: scale(1);
+    background: var(--turquoise-dark);
+  }
+  .navblock__button:hover::after {
     transform: scale(1, 1);
   }
 }
 /*!------------MAIN-------------*/
 /** Hero image section styling */
-
-.herobanner {
+.herobanner--mod {
+  display: grid;
+  grid-template-rows: 248px auto; /* Fallback for Firefox Android & Opera Android */
+  grid-template-rows: [hero-start] clamp(248px, 130.333px + 32.6852vw, 601px) [hero-end content-start] auto [content-end];
+  grid-template-areas:
+    "hero"
+    "content";
+}
+.herobanner--home {
   display: grid;
   grid-template-areas: "hero";
 }
-@media only screen and (min-width: 1024px) {
-  /* Undoing the above as positioning is not needed on header */
-  .herobanner {
-    margin-top: 0 auto;
-  }
-}
-.herobanner--home .herobanner__imagewrap {
-  height: 513px; /* Fallback for Firefox Android & Opera Android */
-  height: clamp(513px, 380.5872px + 36.7704vw, 910px);
-  grid-area: hero;
-}
-.herobanner__gradient {
-  /* To position gradient over image */
-  width: 100%;
-  height: 100%;
+.herobanner {
   position: relative;
-  display: inline-block;
 }
-
-.herobanner__gradient::after {
+.herobanner::after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
+  right: 0;
   width: 100%;
   height: 100%;
-  display: inline-block;
+  z-index: -1;
   background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #0d1317 100%);
 }
+.herobanner--mod::after {
+  background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #151d22 80.42%, #151d22 100%);
+  height: clamp(311px, 198.333px + 31.2963vw, 649px);
+}
+@media only screen and (min-width: 767.5px) {
+  .herobanner--mod::after {
+    background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #151d22 87.42%, #151d22 100%);
+  }
+}
+.herobanner__imagewrap {
+  height: 248px; /* Fallback for Firefox Android & Opera Android */
+  height: clamp(248px, 130.333px + 32.6852vw, 601px);
+  grid-area: hero;
+  z-index: -2;
+}
+.herobanner--home .herobanner__imagewrap {
+  height: 513px; /* Fallback for Firefox Android & Opera Android */
+  height: clamp(513px, 380.5872px + 36.7704vw, 910px);
+}
+.herobanner__image {
+  object-fit: cover;
+  object-position: top;
+  height: 100%;
+  width: 100%;
+}
 .herobanner--home .herobanner__image {
+  display: block;
   object-fit: cover;
   object-position: 70% 20%;
   height: 100%;
   width: 100%;
 }
-
 .herobanner__textblock {
-  padding: 45px; /* Fallback for Firefox Android & Opera Android */
+  padding: 0 45px; /* Fallback for Firefox Android & Opera Android */
   padding: 0 var(--paddington);
-  margin-top: 145px; /* Fallback for Firefox Android & Opera Android */
-  margin-top: clamp(145px, 73.344px + 19.9067vw, 360px); /* With this top margin and bodytext bottom margin, the button will maintain        */
-  display: flex; /*                                         its distance from the bottom, scaling from 88px>120px.                           */
-  flex-flow: column; /*                                     This button is the one exception to my otherwise strict setup of margins/padding.*/
-  align-items: baseline; /*                                 This is due to image and text alignment. Couldn't have it both ways.             */
+  padding-top: 145px; /* Fallback for Firefox Android & Opera Android */
+  padding-top: clamp(145px, 73.344px + 19.9067vw, 360px); /* Keep all the H1s in the same spot on every page */
+  display: flex;
+  flex-flow: column;
+  align-items: baseline;
   color: var(--whiter);
   grid-area: hero;
   z-index: 1;
+}
+.herobanner--mod .herobanner__textblock {
+  padding-bottom: 100px;
+  grid-row: hero-start / content-end;
+  align-self: start;
+}
+.herobanner__textblock--singleline {
+  overflow-x: hidden; /* Bandaid to avoid lowering letter-spacing/font size on mobile */
+  padding-right: clamp(32px, 2px + 8.3333vw, 122px);
+  padding-top: clamp(178px, 92.667px + 23.7037vw, 434px);
 }
 .herobanner__title--home {
   margin-bottom: 15px; /* Fallback for Firefox Android & Opera Android */
   margin-bottom: clamp(15px, 3.3328px + 3.2407vw, 50px);
 }
 .herobanner__bodytext {
-  font-size: var(--bodytext);
   margin-bottom: 60px; /* Fallback for Firefox Android & Opera Android */
-  width: 270px; /* Fallback for Firefox Android & Opera Android */
+  width: 260px; /* Fallback for Firefox Android & Opera Android */
   margin-bottom: clamp(60px, 46.6672px + 3.7037vw, 100px);
-  width: clamp(270px, 143.7872px + 35.0815vw, 649px);
-}
-.herobanner__cta {
-  margin-bottom: auto;
+  width: clamp(260px, 130.333px + 36.0185vw, 649px);
 }
 
 /** Infobanner styling */
 .infobanner {
   position: relative;
   z-index: 2;
-  width: 100vw;
   background: var(--light-dark);
   color: var(--whiter);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
 }
 
 .infobanner__flexbox {
-  padding: 60px var(--paddingless) 60px clamp(15px, -2.6672px + 4.9074vw, 68px);
-  width: 100vw;
-  max-width: 1440px;
-  margin: 0 auto;
+  padding: 60px var(--paddingless) 60px var(--iconpadding);
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -695,28 +726,35 @@ header {
 }
 
 /* Multicolumn Cards */
-
+.multicol {
+  background: linear-gradient(180deg, #151d22 0%, #313641 100%);
+  color: var(--black);
+  width: 100%;
+}
 .multicol--events {
-  width: 100vw;
+  width: 100%;
   position: relative;
   z-index: 1;
   background: var(--black);
   color: var(--black);
 }
-.multicol__wrap {
-  background: var(--black);
-}
+
 .multicol__outerflex {
   padding: 60px 0 var(--whitespace); /* Vertical padding from 60px to 120px */
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
 }
-
-.multicol__cardslist {
+.multicol--exhibits .multicol__outerflex {
+  padding-top: 0;
+}
+.multicol__cardblock {
   display: flex;
   flex-wrap: wrap;
   margin: calc(15px * -1);
+}
+.multicol__cardblock--duo {
+  margin-bottom: 15px;
 }
 .multicol__card {
   border-radius: 3px;
@@ -728,7 +766,6 @@ header {
   box-shadow: var(--boxshadow);
 }
 .multicol__imgwrap {
-  width: 100%;
   height: 291px;
 }
 .multicol__img {
@@ -736,10 +773,13 @@ header {
   height: 291px;
   object-fit: cover;
   object-position: 50% 40%;
-  border-radius: 3px 3px 0 0;
+  border-radius: 2px 2px 0 0;
 }
-.multicol__card--1 .multicol__img {
+.multicol__card--event1 .multicol__img {
   object-position: 50% 20%;
+}
+.multicol__card--exhib1 .multicol__img {
+  object-position: 50% 80%;
 }
 .multicol__cardtext {
   display: flex;
@@ -753,7 +793,7 @@ header {
   line-height: 155.6%;
   max-width: 85ch;
 }
-.multicol__cardbody p:nth-of-type(2) {
+.multicol__cardbody p:nth-of-type(-n + 3) {
   margin-top: 15px;
 }
 
@@ -844,7 +884,7 @@ header {
 
   .singlecol__imgwrap--forkids,
   .singlecol__cardtext {
-    flex-basis: 49.3311036789%;
+    flex-basis: 49.3311036789%; /* to create symmetry with other images while scaling */
     max-width: 590px;
   }
   .singlecol__imgwrap--forkids img {
@@ -862,6 +902,7 @@ header {
 /* Footer styling */
 
 .footer {
+  width: 100%;
   position: relative;
   z-index: 2;
   background-color: var(--black);
@@ -872,7 +913,6 @@ header {
   padding: 60px var(--paddingless) 10px;
 }
 .footer__top {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -928,7 +968,6 @@ header {
   content: "";
   display: block;
   height: 3px;
-  width: 100%;
   position: relative;
   background-color: var(--turquoise);
 }
@@ -942,7 +981,6 @@ header {
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: 100%;
 }
 .footer__policytos {
   display: flex;
@@ -959,7 +997,6 @@ header {
 .footer__line {
   height: 2px;
   background-color: var(--light-dark);
-  width: 100%;
   margin-bottom: 30px;
 }
 @media only screen and (min-width: 883.5px) {

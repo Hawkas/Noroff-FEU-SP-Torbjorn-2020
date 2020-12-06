@@ -6,18 +6,25 @@
     <title>Visit - Community Science Museum</title>
     <meta name="author" content="Torbjørn Haukås" />
     <meta name="description" content="Everything you need to plan your visit to the Community Science Museum." />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300..900&display=swap" rel="stylesheet" />
+    <!-- [1] -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- [2] -->
+    <link rel="preload" as="style" href="$CSS&display=swap" />
+    <!-- [3] -->
+    <link rel="stylesheet" href="$CSS&display=swap" media="print" onload="this.media='all'" />
+    <!-- [4] -->
+    <noscript><link rel="stylesheet" href="$CSS&display=swap" /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/stylesheet.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
-    <script src="https://kit.fontawesome.com/ea2405e1e7.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header class="fullwidth">
+    <header>
       <nav class="section-container navblock">
-        <a href="index.html" class="navblock__logowrap">
-          <img class="navblock__logo" src="images/logo-desktop.svg" alt="Our Logo" />
+        <a href="index.html" title="Home" class="navblock__logowrap">
+          <img class="navblock__logo" src="images/logo-desktop.svg" alt="Community Science Museum's Logo" />
         </a>
         <input type="checkbox" name="checkbox-hack" id="hamburger" class="navblock__toggle" />
         <label class="navblock__dropdown" title="Menu" for="hamburger">
@@ -29,33 +36,33 @@
           <div class="navblock__absolute">
             <ul class="buttontext navblock__list">
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button navblock__button--active" href="visit.html">
-                  <span>Visit</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Visit<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="exhibits.html">
-                  <span>Exhibits</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Exhibits<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="getinvolved.html">
-                  <span>Get involved</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Get Involved<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="aboutus.html">
-                  <span>About us</span>
-                  <span class="fas fa-chevron-right"></span>
+                  About Us<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
               <li>
+                <!--prettier-ignore-->
                 <a class="navblock__button" href="aboutus.html#contactform">
-                  <span>Contact us</span>
-                  <span class="fas fa-chevron-right"></span>
+                  Contact Us<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
             </ul>
@@ -63,15 +70,29 @@
         </div>
       </nav>
     </header>
-    <main></main>
-    <footer class="pagewidth footer">
+    <main>
+      <article>
+        <div class="herobanner herobanner--mod">
+          <div class="herobanner__imagewrap">
+            <picture class="herobanner__gradient">
+              <source media="(max-width: 767px)" srcset="images/visit-768w.jpg" />
+              <source media="(min-width: 768px)" srcset="images/visit-1440w.jpg" />
+              <img class="herobanner__image" src="images/visit-1440w.jpg" alt="Outside view of museum building" />
+            </picture>
+          </div>
+          <h1 class="section-container herobanner__textblock">Visit&nbsp;The<span>Museum</span></h1>
+        </div>
+      </article>
+    </main>
+    <footer class="footer">
       <div class="section-container footer__container">
         <div class="footer__top">
           <div class="footer__topblock footer__topblock--1">
             <div class="footer__flexitem footer__flexitem--follow">
               <h4 class="footer__title">Follow&nbsp;Us</h4>
               <div class="footer__social">
-                <span class="fab fa-facebook-square"></span><span class="fab fa-twitter-square"></span><span class="fab fa-instagram"></span>
+                <span class="fab fa-facebook-square"></span><span class="fab fa-twitter-square"></span
+                ><span class="fab fa-instagram"></span>
               </div>
             </div>
             <div class="footer__flexitem footer__flexitem--involved">
