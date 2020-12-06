@@ -141,7 +141,7 @@ body {
   --sectionpadding: clamp(30px, -43.8464px + 7.2115vw, 60px);
   /* Shadow variables */
   --headershadow: 0px 5.65789px 4.52632px rgba(0, 0, 0, 0.5);
-  --boxshadow: 4px 6px 8px rgba(0, 0, 0, 0.25);
+  --boxshadow: 0 6px 15px 2px rgba(0, 0, 0, 0.25);
 }
 @media only screen and (min-width: 768px) {
   /* Fallbacks in-case clamp doesnt work */
@@ -798,9 +798,14 @@ header {
 }
 
 /* Singlecolumn Cards */
-
+.singlecol {
+  padding-bottom: var(--whitespace);
+}
+.singlecol--getinvolved {
+  background: linear-gradient(180deg, #151d22 0%, #313641 100%);
+}
 .singlecol--explore {
-  padding: 60px 0 var(--whitespace);
+  padding-top: 60px;
   position: relative;
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.25);
   z-index: 2;
@@ -833,17 +838,17 @@ header {
   position: relative;
   z-index: 3;
 }
-.singlecol__header span {
-  white-space: nowrap;
-}
 .singlecol__card {
+  border-radius: 2px;
+  overflow: hidden;
   color: var(--black);
   display: flex;
   flex-wrap: wrap;
+  box-shadow: var(--boxshadow);
 }
 .singlecol__card > * {
   flex-grow: 1;
-  flex-basis: calc((800px - 100%) * 999);
+  flex-basis: calc((800px - 100%) * 999); /* Holy Albatross by Heydon Pickering */
 }
 .singlecol__card--1,
 .singlecol__card--2 {
@@ -871,7 +876,10 @@ header {
   object-fit: cover;
   object-position: 50% 20%;
 }
-.singlecol__imgwrap--forkids img {
+img.singlecol__support {
+  object-position: center;
+}
+.singlecol__forkids {
   height: 291px;
   object-position: 90%;
   transform: scaleX(-1);
@@ -882,12 +890,12 @@ header {
     max-height: 100%;
   }
 
-  .singlecol__imgwrap--forkids,
+  .singlecol__imgwrap--left,
   .singlecol__cardtext {
     flex-basis: 49.3311036789%; /* to create symmetry with other images while scaling */
     max-width: 590px;
   }
-  .singlecol__imgwrap--forkids img {
+  .singlecol__imgwrap--left img {
     height: 100%;
     transform: scaleX(1);
   }
