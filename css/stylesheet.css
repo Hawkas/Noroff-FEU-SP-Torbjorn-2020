@@ -117,6 +117,7 @@ body {
   --light-dark: rgba(49, 54, 65, 1);
   --whitetrans: rgba(239, 235, 235, 0.7);
   --blacktrans: rgba(49, 54, 58, 0.8);
+  --maingradient: linear-gradient(180deg, #151d22 0%, #313641 100%);
   /* Text style */
   --exo: "Exo 2", Arial, sans-serif; /* Fallbacks in-case clamp doesnt work */
   --footertos: 0.875rem;
@@ -200,7 +201,7 @@ h1 > span {
   font-size: var(--sectiontitle);
   font-weight: 800;
   color: var(--whiter);
-  padding: var(--sectionpadding) 0;
+  padding: var(--whitespace) 0 var(--sectionpadding);
   text-shadow: var(--headershadow);
 }
 .infobanner__title,
@@ -216,7 +217,8 @@ h1 > span {
   font-weight: 700;
   line-height: 100%;
 }
-.footer__title {
+.footer__title,
+.contact__label {
   font-size: var(--footertitle);
   font-weight: 600;
 }
@@ -392,7 +394,7 @@ header {
   right: 0;
   transform: scale(0, 1);
   transform-origin: left;
-  transition: transform 500ms ease-in-out;
+  transition: transform 350ms ease-in-out;
 }
 .navblock__logowrap:hover::after,
 .navblock__logowrap:focus::after {
@@ -536,7 +538,7 @@ header {
     height: 3px;
     transform: scale(0, 1);
     transform-origin: left;
-    transition: transform 350ms ease-in-out;
+    transition: transform 250ms ease-in-out;
   }
   .navblock__button--active {
     color: var(--whitetrans);
@@ -545,7 +547,10 @@ header {
     transform: scale(1);
     background: var(--turquoise-dark);
   }
-  .navblock__button:hover::after {
+  .navblock__list li:hover .navblock__button::after, /* Messy bandaid. The li was causing some jank */
+  .navblock__list li:focus .navblock__button::after,
+  .navblock__button:hover::after,
+  .navblock__button:focus::after {
     transform: scale(1, 1);
   }
 }
@@ -727,7 +732,7 @@ header {
 
 /* Multicolumn Cards */
 .multicol {
-  background: linear-gradient(180deg, #151d22 0%, #313641 100%);
+  background: var(--maingradient);
   color: var(--black);
   width: 100%;
 }
@@ -738,25 +743,28 @@ header {
   background: var(--black);
   color: var(--black);
 }
-
+section.multicol--visit {
+  background: var(--black);
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
+}
 .multicol__outerflex {
-  padding: 60px 0 var(--whitespace); /* Vertical padding from 60px to 120px */
+  padding-bottom: var(--whitespace);
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
 }
-.multicol--exhibits .multicol__outerflex {
-  padding-top: 0;
+.multicol--visit .multicol__header {
+  line-height: 80%;
 }
 .multicol__cardblock {
   display: flex;
   flex-wrap: wrap;
   margin: calc(15px * -1);
+  /* Negative margin in order to create gaps between items when in row, but no margins towards edges of container */
 }
-.multicol__cardblock--duo {
-  margin-bottom: 15px;
-}
-.multicol__card {
+.multicol__cardblock > * {
+  display: flex;
+  flex-flow: column;
   border-radius: 3px;
   flex-grow: 1;
   flex-basis: calc((780px - 100%) * 999);
@@ -765,9 +773,34 @@ header {
   background-color: var(--white);
   box-shadow: var(--boxshadow);
 }
+.multicol--exhibits .multicol__cardblock--duo,
+.multicol__cardtitle {
+  margin-bottom: 15px;
+}
+.multicol--exhibits .multicol__cardblock > * {
+  flex-basis: calc((865px - 100%) * 999);
+}
+.multicol__card--visit1 {
+  max-width: 787.33px;
+}
+.multicol__card--visit2 {
+  flex-flow: row wrap;
+  flex-grow: 0.33;
+  min-width: clamp(330px, -6.411px + 26.7418vw, 378.67px);
+}
+.multicol__card--visit2 > * {
+  flex-grow: 1;
+  flex-basis: calc((680px - 100%) * 999);
+}
 .multicol__imgwrap {
   height: 291px;
 }
+.multicol__imgwrap--map {
+  flex-grow: 1;
+  /* Don't need fallback since default is good */
+  height: clamp(309px, 236.333px + 20.1852vw, 527px);
+}
+
 .multicol__img {
   width: 100%;
   height: 291px;
@@ -775,37 +808,78 @@ header {
   object-position: 50% 40%;
   border-radius: 2px 2px 0 0;
 }
+.multicol__img--map {
+  height: 100%;
+  border-radius: 0 0 3px 3px;
+}
 .multicol__card--event1 .multicol__img {
   object-position: 50% 20%;
 }
 .multicol__card--exhib1 .multicol__img {
   object-position: 50% 80%;
 }
-.multicol__cardtext {
+.multicol__card--exhib3 .multicol__img {
+  object-position: top;
+}
+.multicol__card--visit5 .multicol__img {
+  object-position: top center;
+}
+.multicol__card--visit3 .multicol__img {
+  object-position: 50% 20%;
+}
+.multicol__cardtext,
+.multicol__icontext {
   display: flex;
   flex-flow: column;
-  padding: 30px clamp(20px, 35px + -1.3889vw, 30px); /* With negative vw units I make it go from 30px at mobile to 15px on desktop */
 }
-.multicol__cardtitle {
-  margin-bottom: 15px;
+.multicol__innerflex,
+.multicol__cardtext {
+  display: flex;
+  padding: 30px 30px; /* Firefox Android & Opera Android Fallback */
+  padding: 30px clamp(20px, 35px + -1.3889vw, 30px);
+}
+.multicol__icon {
+  max-width: 35px;
+  align-self: baseline;
 }
 .multicol__cardbody {
   line-height: 155.6%;
   max-width: 85ch;
 }
-.multicol__cardbody p:nth-of-type(-n + 3) {
+.multicol__cardbody--directions {
+  max-width: 550px;
+}
+.multicol__cardbody p:nth-of-type(n + 2) {
   margin-top: 15px;
 }
 
+.multicol__link {
+  text-transform: none;
+  font-size: inherit;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.multicol__link:hover {
+  color: var(--orange);
+  text-decoration: underline;
+}
+.multicol__hours {
+  color: var(--blacktrans);
+}
+@media only screen and (max-width: 1257.5px) {
+  .multicol__cardblock--triple > :nth-last-child(n + 3),
+  .multicol__cardblock--triple > :nth-last-child(n + 3) ~ * {
+    flex-basis: 100%;
+  }
+}
 /* Singlecolumn Cards */
 .singlecol {
   padding-bottom: var(--whitespace);
 }
 .singlecol--getinvolved {
-  background: linear-gradient(180deg, #151d22 0%, #313641 100%);
+  background: var(--maingradient);
 }
 .singlecol--explore {
-  padding-top: 60px;
   position: relative;
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.25);
   z-index: 2;
@@ -879,7 +953,7 @@ header {
 img.singlecol__support {
   object-position: center;
 }
-.singlecol__forkids {
+img.singlecol__forkids {
   height: 291px;
   object-position: 90%;
   transform: scaleX(-1);
@@ -906,7 +980,26 @@ img.singlecol__support {
     max-width: 605px;
   }
 }
-
+/* Form styling */
+.contact {
+  background: var(--light-dark);
+  color: var(--white);
+}
+.contact__outerflex,
+.contact__input-wrap {
+  display: flex;
+  flex-flow: column;
+}
+.contact__innerflex {
+  display: flex;
+  flex-flow: column wrap;
+}
+.contact__label {
+  margin-bottom: 5px;
+}
+.contact__input-wrap {
+  margin-bottom: 30px;
+}
 /* Footer styling */
 
 .footer {
