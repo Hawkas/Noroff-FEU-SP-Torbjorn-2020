@@ -992,13 +992,28 @@ img.singlecol__forkids {
 }
 .contact__innerflex {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
+  max-width: 696px;
+  margin: calc(15px * -1);
 }
 .contact__label {
   margin-bottom: 5px;
 }
 .contact__input-wrap {
-  margin-bottom: 30px;
+  margin: 15px;
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+.contact__input-wrap--name,
+.contact__input-wrap--email {
+  flex-basis: calc((696px - 100%) * 999);
+}
+.contact__input-text {
+  background-color: var(--whiter);
+  color: var(--black);
+  min-height: 40px;
+  padding: 10px 5px;
+  border-radius: 4px;
 }
 /* Footer styling */
 
