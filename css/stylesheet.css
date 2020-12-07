@@ -743,10 +743,10 @@ header {
   color: var(--black);
 }
 .multicol--visit {
-  background: var(--black);
+  background: var(--maingradient);
 }
 section.multicol--visit {
-  background: var(--light-dark);
+  background: var(--black);
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
 }
 .multicol__outerflex {
@@ -986,15 +986,36 @@ img.singlecol__forkids {
 }
 /* Form styling */
 .contact {
-  background: var(--maingradient);
+  background: linear-gradient(90deg, var(--light-dark) 50%, var(--black) 50%);
   color: var(--white);
 }
 .contact__wrap {
   display: flex;
+  background: var(--light-dark);
 }
 .contact__sidebar {
-  flex-grow: 1;
+  display: none;
   margin-left: 100px;
+  padding-right: var(--paddingless);
+  background: var(--black);
+  align-items: center;
+  justify-content: end;
+  justify-items: end;
+  flex-grow: 1;
+}
+@media only screen and (min-width: 1370px) {
+  .contact__sidebar {
+    display: grid;
+  }
+  .contact__wrap {
+    padding-right: 0;
+  }
+}
+.contact__icon {
+  display: inline-block;
+  margin: auto auto;
+  font-size: 269px;
+  color: var(--whitetrans);
 }
 .contact__outerflex,
 .contact__input-wrap {
@@ -1008,7 +1029,6 @@ img.singlecol__forkids {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-
   margin: calc(15px * -1);
 }
 .contact__label {
@@ -1018,6 +1038,7 @@ img.singlecol__forkids {
   flex-basis: 100%;
   flex-grow: 1;
 }
+
 .contact__button {
   padding: 10px 30px;
   border: none;
@@ -1054,6 +1075,7 @@ img.singlecol__forkids {
 textarea {
   resize: vertical;
 }
+
 /* Footer styling */
 
 .footer {
