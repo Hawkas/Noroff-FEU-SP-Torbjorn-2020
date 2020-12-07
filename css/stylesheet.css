@@ -322,7 +322,6 @@ h4,
 .cta--turq:focus {
   background-color: var(--black);
   color: var(--whiter);
-  border-bottom: 3px solid var(--whiter);
 }
 .cta--turq:hover .fas,
 .cta--turq:focus .fas {
@@ -743,8 +742,11 @@ header {
   background: var(--black);
   color: var(--black);
 }
-section.multicol--visit {
+.multicol--visit {
   background: var(--black);
+}
+section.multicol--visit {
+  background: var(--light-dark);
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
 }
 .multicol__outerflex {
@@ -982,38 +984,73 @@ img.singlecol__forkids {
 }
 /* Form styling */
 .contact {
-  background: var(--light-dark);
+  background: var(--maingradient);
   color: var(--white);
+}
+.contact__wrap {
+  display: flex;
+}
+.contact__sidebar {
+  flex-grow: 1;
+  margin-left: 100px;
 }
 .contact__outerflex,
 .contact__input-wrap {
+  flex-grow: 1;
+  max-width: 696px;
   display: flex;
   flex-flow: column;
 }
 .contact__innerflex {
+  padding-bottom: var(--whitespace);
   display: flex;
   flex-flow: row wrap;
-  max-width: 696px;
+  justify-content: flex-start;
+
   margin: calc(15px * -1);
 }
 .contact__label {
   margin-bottom: 5px;
 }
 .contact__input-wrap {
-  margin: 15px;
   flex-basis: 100%;
   flex-grow: 1;
+}
+.contact__button {
+  padding: 10px 30px;
+  border: none;
+}
+.contact__input-wrap,
+.contact__button,
+.contact__success {
+  margin: 15px;
+}
+.contact__input-text--number {
+  max-width: 150px;
+}
+.contact__success {
+  display: none;
+  font-size: var(--footertitle);
+  color: var(--turquoise);
+  align-self: flex-end;
+}
+.contact__success:target {
+  display: block;
 }
 .contact__input-wrap--name,
 .contact__input-wrap--email {
   flex-basis: calc((696px - 100%) * 999);
 }
 .contact__input-text {
+  border: 1px solid #313641;
   background-color: var(--whiter);
   color: var(--black);
   min-height: 40px;
   padding: 10px 5px;
   border-radius: 4px;
+}
+textarea {
+  resize: vertical;
 }
 /* Footer styling */
 

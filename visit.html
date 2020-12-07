@@ -157,7 +157,7 @@
                 <h3 class="multicol__cardtitle">Accessibility</h3>
                 <div class="multicol__cardbody">
                   <p>The museum has wheelchair accessibility&nbsp;ramps.</p>
-                  <p>It also has audio guides and braille display signs for the visually&nbsp;impaired.</p>
+                  <p>It also has audio guides and braille display signs for the visually impaired.</p>
                 </div>
               </div>
             </article>
@@ -202,7 +202,7 @@
         <div class="section-container contact__wrap">
           <div class="contact__outerflex">
             <h2 class="sectiontitle contact__header">Book a Tour</h2>
-            <form action="#" method="GET" id="booking-form">
+            <form action="#success" method="GET" id="booking-form">
               <fieldset class="contact__innerflex">
                 <div class="contact__input-wrap contact__input-wrap--name">
                   <label for="firstname" class="contact__label">Your Name:</label>
@@ -245,9 +245,12 @@
                     placeholder="Enter your message"
                   ></textarea>
                 </div>
+                <button type="submit" class="cta cta--turq contact__button">Submit</button>
+                <p class="contact__success" id="success">&check; Your message has been sent.</p>
               </fieldset>
             </form>
           </div>
+          <div class="contact__sidebar"><span class="fas fa-book"></span></div>
         </div>
       </section>
     </main>
