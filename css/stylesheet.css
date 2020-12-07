@@ -798,6 +798,8 @@ section.multicol--visit {
   height: 291px;
 }
 .multicol__imgwrap--map {
+  width: 100%;
+  height: 100%;
   flex-grow: 1;
   /* Don't need fallback since default is good */
   height: clamp(309px, 236.333px + 20.1852vw, 527px);
