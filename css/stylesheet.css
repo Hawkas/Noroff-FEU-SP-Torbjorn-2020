@@ -117,7 +117,7 @@ body {
   --light-dark: rgba(49, 54, 65, 1);
   --whitetrans: rgba(239, 235, 235, 0.7);
   --blacktrans: rgba(49, 54, 58, 0.8);
-  --maingradient: linear-gradient(180deg, #151d22 0%, #313641 100%);
+  --maingradient: linear-gradient(180deg, rgb(21, 29, 34) 0%, #313641 100%);
   /* Text style */
   --exo: "Exo 2", Arial, sans-serif; /* Fallbacks in-case clamp doesnt work */
   --footertos: 0.875rem;
@@ -527,6 +527,7 @@ header {
   }
   .navblock__logowrap {
     padding-right: 0;
+    margin-right: 80px;
     margin-right: clamp(80.78px, -286.6704px + 35.8077vw, 230px);
   }
   .navblock__button::after {
@@ -579,22 +580,23 @@ header {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #0d1317 100%);
+  background: linear-gradient(180deg, rgba(21, 29, 34, 0) 0%, #0d1317 100%);
 }
 .herobanner--mod::after {
-  background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #151d22 80.42%, #151d22 100%);
+  background: linear-gradient(180deg, rgba(21, 29, 34, 0) 0%, rgba(21, 29, 34, 1) 88%);
   height: clamp(311px, 198.333px + 31.2963vw, 649px);
 }
-@media only screen and (min-width: 767.5px) {
-  .herobanner--mod::after {
-    background: linear-gradient(180deg, rgba(13, 19, 23, 0.1) 0%, #151d22 87.42%, #151d22 100%);
-  }
-}
 .herobanner__imagewrap {
-  height: 248px; /* Fallback for Firefox Android & Opera Android */
-  height: clamp(248px, 130.333px + 32.6852vw, 601px);
   grid-area: hero;
+  height: 311px; /* Fallback for Firefox Android & Opera Android */
+  height: clamp(311px, 198.333px + 31.2963vw, 649px);
   z-index: -2;
+}
+.herobanner--mod .herobanner__imagewrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .herobanner--home .herobanner__imagewrap {
   height: 513px; /* Fallback for Firefox Android & Opera Android */
@@ -616,7 +618,7 @@ header {
   padding: 0 45px; /* Fallback for Firefox Android & Opera Android */
   padding: 0 var(--paddington);
   padding-top: 145px; /* Fallback for Firefox Android & Opera Android */
-  padding-top: clamp(145px, 73.344px + 19.9067vw, 360px); /* Keep all the H1s in the same spot on every page */
+  padding-top: clamp(145px, 73.344px + 19.9067vw, 360px);
   display: flex;
   flex-flow: column;
   align-items: baseline;
@@ -625,7 +627,8 @@ header {
   z-index: 1;
 }
 .herobanner--mod .herobanner__textblock {
-  padding-bottom: 100px;
+  padding-bottom: 60px;
+  padding-bottom: clamp(60px, 46.67px + 3.7037vw, 100px);
   grid-row: hero-start / content-end;
   align-self: start;
 }
@@ -741,9 +744,6 @@ header {
   background: var(--black);
   color: var(--black);
 }
-.multicol--visit {
-  background: var(--maingradient);
-}
 section.multicol--visit {
   background: var(--black);
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
@@ -763,6 +763,9 @@ section.multicol--visit {
   margin: calc(15px * -1);
   /* Negative margin in order to create gaps between items when in row, but no margins towards edges of container */
 }
+.multicol__cardblock--about {
+  margin: 0;
+}
 .multicol__cardblock > * {
   display: flex;
   flex-flow: column;
@@ -771,6 +774,8 @@ section.multicol--visit {
   flex-basis: calc((780px - 100%) * 999);
   margin: 15px;
   min-width: 330px;
+}
+.multicol__card {
   background-color: var(--white);
   box-shadow: var(--boxshadow);
 }
@@ -778,6 +783,11 @@ section.multicol--visit {
 .multicol__cardtitle {
   margin-bottom: 15px;
 }
+.multicol__cardtitle--about {
+  font-size: var(--sectiontitle);
+  margin-bottom: 30px;
+}
+
 .multicol--exhibits .multicol__cardblock > * {
   flex-basis: calc((865px - 100%) * 999);
 }
@@ -793,6 +803,10 @@ section.multicol--visit {
   flex-grow: 1;
   flex-basis: calc((680px - 100%) * 999);
 }
+.multicol__card--about {
+  flex-flow: row;
+  justify-content: space-between;
+}
 .multicol__imgwrap {
   height: 291px;
 }
@@ -803,7 +817,12 @@ section.multicol--visit {
   /* Don't need fallback since default is good */
   height: clamp(309px, 236.333px + 20.1852vw, 527px);
 }
-
+.multicol__imgwrap--about {
+  display: none;
+  max-width: 409px;
+  max-height: 281px;
+  align-self: stretch;
+}
 .multicol__img {
   width: 100%;
   height: 291px;
@@ -855,7 +874,12 @@ section.multicol--visit {
 .multicol__cardbody p:nth-of-type(n + 2) {
   margin-top: 15px;
 }
-
+.multicol__cardbody--about {
+  font-size: var(--footertitle);
+  font-weight: 500;
+  line-height: 160%;
+  max-width: 660px;
+}
 .multicol__link {
   text-transform: none;
   font-size: inherit;
@@ -1048,7 +1072,7 @@ img.singlecol__forkids {
   margin: 15px;
 }
 .contact__input-text--number {
-  max-width: 150px;
+  max-width: 110px;
 }
 .contact__success {
   display: none;
