@@ -607,11 +607,10 @@ header {
   width: 100%;
 }
 .herobanner--home .herobanner__image {
-  display: block;
-  object-fit: cover;
   object-position: 70% 20%;
-  height: 100%;
-  width: 100%;
+}
+.herobanner--visit .herobanner__image {
+  object-position: 70% 30%;
 }
 .herobanner__textblock {
   padding: 0 45px; /* Fallback for Firefox Android & Opera Android */
