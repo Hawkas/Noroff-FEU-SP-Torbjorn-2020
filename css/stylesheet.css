@@ -461,16 +461,17 @@ header {
   }
   .navblock__dropdown {
     position: relative;
+    line-height: 100%;
     font-size: 30px; /* Fallback for Firefox Android & Opera Android */
     font-size: clamp(27.59px, 19.344px + 2.1289vw, 50px);
-    cursor: pointer; /* This is just for me, obviously not gaining anything on touchscreens here */
+    cursor: pointer;
   }
   .navblock__cross {
-    display: inline-block;
+    display: block;
     position: absolute; /* To position it on top of the bars */
-    line-height: 100%;
-    top: 4px;
-    left: 1px; /* To center on the bars */
+    
+    top: 0px;
+    left: 1px; /* To center on the bars, as they have 1px difference in real width */
     right: 0;
   }
   .navblock__cross::selection {
@@ -556,21 +557,12 @@ header {
 }
 /*!------------MAIN-------------*/
 /** Hero image section styling */
-.herobanner--mod {
-  display: grid;
-  grid-template-rows: 248px auto; /* Fallback for Firefox Android & Opera Android */
-  grid-template-rows: [hero-start] clamp(248px, 130.333px + 32.6852vw, 601px) [hero-end content-start] auto [content-end];
-  grid-template-areas:
-    "hero"
-    "content";
-}
-.herobanner--home {
+.herobanner {
   display: grid;
   grid-template-areas: "hero";
-}
-.herobanner {
   position: relative;
 }
+
 .herobanner::after {
   content: "";
   position: absolute;
@@ -580,10 +572,10 @@ header {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(21, 29, 34, 0) 0%, #0d1317 100%);
+  background: linear-gradient(180deg, rgba(21, 29, 34, 0) 0%, var(--black) 100%);
 }
 .herobanner--mod::after {
-  background: linear-gradient(180deg, rgba(21, 29, 34, 0) 0%, rgba(21, 29, 34, 1) 88%);
+  background: linear-gradient(180deg, rgba(21, 29, 34, 0) 0%, var(--black) 88%);
   height: clamp(311px, 198.333px + 31.2963vw, 649px);
 }
 .herobanner__imagewrap {
@@ -629,8 +621,6 @@ header {
 .herobanner--mod .herobanner__textblock {
   padding-bottom: 60px;
   padding-bottom: clamp(60px, 46.67px + 3.7037vw, 100px);
-  grid-row: hero-start / content-end;
-  align-self: start;
 }
 .herobanner__textblock--singleline {
   overflow-x: hidden; /* Bandaid to avoid lowering letter-spacing/font size on mobile */
@@ -763,9 +753,6 @@ section.multicol--visit {
   margin: calc(15px * -1);
   /* Negative margin in order to create gaps between items when in row, but no margins towards edges of container */
 }
-.multicol__cardblock--about {
-  margin: 0;
-}
 .multicol__cardblock > * {
   display: flex;
   flex-flow: column;
@@ -774,6 +761,26 @@ section.multicol--visit {
   flex-basis: calc((780px - 100%) * 999);
   margin: 15px;
   min-width: 330px;
+}
+.multicol__cardblock--inner {
+  flex-basis: 100%;
+  margin: 0;
+  padding-bottom: 30px;
+}
+.multicol__cardblock--inner > * {
+  border-radius: 0;
+  margin: 0;
+}
+.multicol__cardtext--big,
+.multicol__imgwrap--about {
+  flex-basis: calc((780px - 100%) * 999);
+  flex-grow: 1;
+}
+.multicol__cardtext--big {
+  flex-grow: 2;
+}
+.multicol__cardtext--mod {
+  padding: 0;
 }
 .multicol__card {
   background-color: var(--white);
@@ -785,7 +792,6 @@ section.multicol--visit {
 }
 .multicol__cardtitle--about {
   font-size: var(--sectiontitle);
-  margin-bottom: 30px;
 }
 
 .multicol--exhibits .multicol__cardblock > * {
@@ -797,6 +803,7 @@ section.multicol--visit {
 .multicol__card--visit2 {
   flex-flow: row wrap;
   flex-grow: 0.33;
+  min-width: 330px;
   min-width: clamp(330px, -6.411px + 26.7418vw, 378.67px);
 }
 .multicol__card--visit2 > * {
@@ -804,7 +811,8 @@ section.multicol--visit {
   flex-basis: calc((680px - 100%) * 999);
 }
 .multicol__card--about {
-  flex-flow: row;
+  display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 .multicol__imgwrap {
@@ -812,23 +820,28 @@ section.multicol--visit {
 }
 .multicol__imgwrap--map {
   width: 100%;
-  height: 100%;
   flex-grow: 1;
-  /* Don't need fallback since default is good */
+  min-height: 309px; /* Fallbacks */
+  height: 100%;
   height: clamp(309px, 236.333px + 20.1852vw, 527px);
 }
 .multicol__imgwrap--about {
   display: none;
+  border-radius: 0 3px 0 0;
   max-width: 409px;
-  max-height: 281px;
-  align-self: stretch;
+  max-height: 282.6px;
+  background-color: var(--turquoise-dark);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
 }
 .multicol__img {
   width: 100%;
-  height: 291px;
+  height: 100%;
   object-fit: cover;
   object-position: 50% 40%;
   border-radius: 2px 2px 0 0;
+}
+.multicol__img--about {
+  clip-path: polygon(5% 0, 100% 0, 100% 95%, 42% 95%);
 }
 .multicol__img--map {
   height: 100%;
@@ -860,6 +873,7 @@ section.multicol--visit {
   padding: 30px 30px; /* Firefox Android & Opera Android Fallback */
   padding: 30px clamp(20px, 35px + -1.3889vw, 30px);
 }
+
 .multicol__icon {
   max-width: 35px;
   align-self: baseline;
@@ -878,7 +892,7 @@ section.multicol--visit {
   font-size: var(--footertitle);
   font-weight: 500;
   line-height: 160%;
-  max-width: 660px;
+  max-width 660px;
 }
 .multicol__link {
   text-transform: none;
@@ -892,6 +906,11 @@ section.multicol--visit {
 }
 .multicol__hours {
   color: var(--blacktrans);
+}
+@media only screen and (min-width: 1250px) {
+  .multicol__imgwrap--about {
+    display: block;
+  }
 }
 @media only screen and (max-width: 1257.5px) {
   .multicol__cardblock--triple > :nth-last-child(n + 3),
@@ -1016,6 +1035,9 @@ img.singlecol__forkids {
   display: flex;
   background: var(--light-dark);
 }
+.contact__outerflex {
+  padding-bottom: var(--whitespace);
+}
 .contact__sidebar {
   display: none;
   margin-left: 100px;
@@ -1026,7 +1048,10 @@ img.singlecol__forkids {
   justify-items: end;
   flex-grow: 1;
 }
-@media only screen and (min-width: 1370px) {
+.contact__sidebar--book {
+  clip-path: polygon(24% 0px, 102.3% 0px, 101.92% 50%, 102.11% 100.00%, 25% 100%, 0% 50%);
+}
+@media only screen and (min-width: 1300px) {
   .contact__sidebar {
     display: grid;
   }
@@ -1048,7 +1073,6 @@ img.singlecol__forkids {
   flex-flow: column;
 }
 .contact__innerflex {
-  padding-bottom: var(--whitespace);
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
