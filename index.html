@@ -74,7 +74,7 @@
       </nav>
     </header>
     <main>
-      <div class="herobanner herobanner--home">
+      <header class="herobanner herobanner--home">
         <picture class="herobanner__imagewrap">
           <!-- Images cropped with different aspect ratios, due to need for more height on mobile devices-->
           <source media="(max-width: 767px)" srcset="images/homebanner-768w.jpg" />
@@ -93,8 +93,9 @@
             Plan your visit<span class="fas fa-chevron-right"></span>
           </a>
         </div>
-      </div>
+      </header>
       <aside class="infobanner">
+        <h2 class="hidden">Museum Details</h2>
         <ul class="section-container infobanner__flexbox">
           <li class="infobanner__block infobanner__block--opening">
             <span class="far fa-clock fa-fw infobanner__icon infobanner__icon--clock"></span>
@@ -265,11 +266,12 @@
       </article>
     </main>
     <footer class="footer">
+      <h2 class="hidden">Footer</h2>
       <div class="section-container footer__container">
         <div class="footer__top">
           <div class="footer__topblock footer__topblock--1">
             <div class="footer__flexitem footer__flexitem--follow">
-              <h4 class="footer__title">Follow&nbsp;Us</h4>
+              <h3 class="footer__title">Follow&nbsp;Us</h3>
               <div class="footer__social">
                 <span class="fab fa-facebook-square"></span>
                 <span class="fab fa-twitter-square"></span>
@@ -277,7 +279,7 @@
               </div>
             </div>
             <div class="footer__flexitem footer__flexitem--involved">
-              <h4 class="footer__title">Get&nbsp;Involved</h4>
+              <h3 class="footer__title">Get&nbsp;Involved</h3>
               <ul class="footer__list">
                 <li>
                   <a href="getinvolved.html#donate" class="links footer__link">Donate</a>
@@ -293,12 +295,12 @@
           </div>
           <div class="footer__topblock footer__topblock--2">
             <div class="footer__flexitem footer__flexitem--location">
-              <h4 class="footer__title">Location</h4>
+              <h3 class="footer__title">Location</h3>
               <p class="footer__address">Vestre Torggaten&nbsp;9, 5015&nbsp;Bergen</p>
               <a href="visit.html" class="links footer__link">Getting Here</a>
             </div>
             <div class="footer__flexitem footer__flexitem--opening">
-              <h4 class="footer__title">Opening&nbsp;Hours</h4>
+              <h3 class="footer__title">Opening&nbsp;Hours</h3>
               <div class="footer__timelist">
                 <ol class="footer__list footer__list--days">
                   <li>Mon - Thu:</li>
@@ -318,11 +320,11 @@
         </div>
         <div class="footer__line"></div>
         <div class="footer__bottom">
-          <div class="footer__policytos">
-            <span class="footer__tinylink">Privacy&nbsp;Policy</span>
-            <span class="footer__tinylink">Terms&nbsp;of&nbsp;Use</span>
-            <a href="aboutus.html#contactus" class="footer__tinylink">Contact&nbsp;Us</a>
-          </div>
+          <ul class="footer__policytos">
+            <li class="footer__tinylink">Privacy&nbsp;Policy</li>
+            <li class="footer__tinylink">Terms&nbsp;of&nbsp;Use</li>
+            <li><a href="aboutus.html#contactus" class="footer__tinylink">Contact&nbsp;Us</a></li>
+          </ul>
           <small class="footer__copyright">&copy; 2020 Community Science Museum</small>
         </div>
       </div>

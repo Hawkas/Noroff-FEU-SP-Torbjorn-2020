@@ -10,7 +10,7 @@ iframe,
 h1,
 h2,
 h3,
-h4,
+h3,
 h5,
 h6,
 p,
@@ -259,7 +259,7 @@ span {
 h1,
 h2,
 h3,
-h4,
+h3,
 .infobanner__title,
 .buttontext,
 .cta,
@@ -287,9 +287,17 @@ h4,
 }
 
 /*? Universal Components */
-
-/* To align content along the same linearly scaling margin*/
-
+.hidden {
+  border: 0; 
+  clip: rect(0 0 0 0); 
+  height: 1px; 
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
 .section-container {
   padding: 0 var(--paddingless);
   margin: 0 auto;
@@ -557,6 +565,12 @@ header {
 }
 /*!------------MAIN-------------*/
 /** Hero image section styling */
+main {
+  display: grid; /* Just so i can z-index all children */
+}
+main > * {
+  z-index: 3;
+}
 .herobanner {
   display: grid;
   grid-template-areas: "hero";
@@ -582,7 +596,7 @@ header {
   grid-area: hero;
   height: 311px; /* Fallback for Firefox Android & Opera Android */
   height: clamp(311px, 198.333px + 31.2963vw, 649px);
-  z-index: -2;
+  z-index: -1;
 }
 .herobanner--mod .herobanner__imagewrap {
   position: absolute;
@@ -616,14 +630,14 @@ header {
   align-items: baseline;
   color: var(--whiter);
   grid-area: hero;
-  z-index: 1;
+  z-index 2;
 }
 .herobanner--mod .herobanner__textblock {
   padding-bottom: 60px;
   padding-bottom: clamp(60px, 46.67px + 3.7037vw, 100px);
 }
 .herobanner__textblock--singleline {
-  overflow-x: hidden; /* Bandaid to avoid lowering letter-spacing/font size on mobile */
+  overflow-x: hidden;
   padding-right: clamp(32px, 2px + 8.3333vw, 122px);
   padding-top: clamp(178px, 92.667px + 23.7037vw, 434px);
 }
@@ -723,19 +737,17 @@ header {
 
 /* Multicolumn Cards */
 .multicol {
-  background: var(--maingradient);
+  background: var(--black);
   color: var(--black);
-  width: 100%;
 }
 .multicol--events {
-  width: 100%;
   position: relative;
   z-index: 1;
-  background: var(--black);
-  color: var(--black);
 }
-section.multicol--visit {
-  background: var(--black);
+.multicol--exhibits, .multicol--visit {
+  background: var(--maingradient);
+}
+.multicol--visit2 {
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
 }
 .multicol__outerflex {
@@ -744,7 +756,7 @@ section.multicol--visit {
   flex-flow: column;
   justify-content: flex-start;
 }
-.multicol--visit .multicol__header {
+.multicol--visit2 .multicol__header {
   line-height: 80%;
 }
 .multicol__cardblock {
@@ -830,6 +842,7 @@ section.multicol--visit {
   border-radius: 0 3px 0 0;
   max-width: 409px;
   max-height: 282.6px;
+  margin-bottom: 30px;
   background-color: var(--turquoise-dark);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
 }
@@ -1032,31 +1045,44 @@ img.singlecol__forkids {
   color: var(--white);
 }
 .contact__wrap {
+  padding: 0 var(--paddington);
   display: flex;
-  background: var(--light-dark);
+  flex-wrap: wrap;
+}
+.contact__wrap--mod > * {
+  min-width: clamp(0px, (780px - 100%) * 999, 100%);
+  flex-grow: 1;
 }
 .contact__outerflex {
+  background: var(--light-dark);
+  flex-basis: 63.8194444444%;
+  padding: 0 clamp(45px, 26.67px + 5.0926vw, 100px) var(--whitespace) var(--paddington);
   padding-bottom: var(--whitespace);
 }
 .contact__sidebar {
-  display: none;
-  margin-left: 100px;
-  padding-right: var(--paddingless);
   background: var(--black);
+  flex-grow: 1;
+  flex-basis: 36.1805555556%;
+  max-width: 521px;
+}
+.contact__sidebar--mod {
+ padding: 0 var(--paddington) 0 clamp(45px, 26.67px + 5.0926vw, 100px);
+}
+.contact__sidebar--book {
+  padding-right: var(--paddingless);
+  display: none;
   align-items: center;
   justify-content: end;
   justify-items: end;
-  flex-grow: 1;
-}
-.contact__sidebar--book {
+  margin-left: 100px;
   clip-path: polygon(24% 0px, 102.3% 0px, 101.92% 50%, 102.11% 100.00%, 25% 100%, 0% 50%);
 }
 @media only screen and (min-width: 1300px) {
-  .contact__sidebar {
+  .contact__sidebar--book {
     display: grid;
   }
   .contact__wrap {
-    padding-right: 0;
+    padding-right 0;
   }
 }
 .contact__icon {
@@ -1067,8 +1093,6 @@ img.singlecol__forkids {
 }
 .contact__outerflex,
 .contact__input-wrap {
-  flex-grow: 1;
-  max-width: 696px;
   display: flex;
   flex-flow: column;
 }
@@ -1076,13 +1100,14 @@ img.singlecol__forkids {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin: calc(15px * -1);
+  margin: calc(15px * -1) 0;
 }
 .contact__label {
   margin-bottom: 5px;
 }
 .contact__input-wrap {
   flex-basis: 100%;
+  max-width: 696px;
   flex-grow: 1;
 }
 
@@ -1093,7 +1118,7 @@ img.singlecol__forkids {
 .contact__input-wrap,
 .contact__button,
 .contact__success {
-  margin: 15px;
+  margin: 15px 0;
 }
 .contact__input-text--number {
   max-width: 110px;
