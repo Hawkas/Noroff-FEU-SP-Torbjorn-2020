@@ -61,7 +61,7 @@
               </li>
               <li>
                 <!--prettier-ignore-->
-                <a class="navblock__button" href="aboutus.html#contactform">
+                <a class="navblock__button" href="aboutus.html#contact-form">
                   Contact Us<span class="fas fa-chevron-right"></span>
                 </a>
               </li>
@@ -196,8 +196,9 @@
         <div class="section-container contact__wrap">
           <div class="contact__outerflex">
             <h2 class="sectiontitle contact__header">Book a Tour</h2>
-            <form action="#success" method="GET" id="booking-form">
-              <fieldset class="contact__innerflex">
+            <form class="contact__innerflex" action="#success" method="GET" id="booking-form">
+              <fieldset class="contact__fieldset">
+                <legend class="hidden">Personal Details</legend>
                 <div class="contact__input-wrap contact__input-wrap--name">
                   <label for="name" class="contact__label">Your Name:</label>
                   <input type="text" name="name" id="name" class="contact__input-text" placeholder="Enter your name" />
@@ -216,6 +217,9 @@
                   <label for="phone" class="contact__label">Phone Number:</label>
                   <input type="text" name="phone" id="phone" class="contact__input-text" placeholder="Enter your phone number" />
                 </div>
+              </fieldset>
+              <fieldset class="contact__fieldset">
+                <legend class="hidden">Booking Details</legend>
                 <div class="contact__input-wrap contact__input-wrap--groupsize">
                   <label for="groupsize" class="contact__label">Group Size:</label>
                   <input
@@ -239,9 +243,9 @@
                     placeholder="Enter your message"
                   ></textarea>
                 </div>
-                <button type="submit" class="cta cta--turq contact__button">Submit</button>
-                <p class="contact__success" id="success">&check; Your message has been sent.</p>
               </fieldset>
+              <button type="submit" class="cta cta--turq contact__button">Submit</button>
+              <p class="contact__success" id="success">&check; Your message has been sent.</p>
             </form>
           </div>
           <div class="contact__sidebar contact__sidebar--book"><span class="fas fa-book contact__icon"></span></div>

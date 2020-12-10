@@ -10,7 +10,7 @@ iframe,
 h1,
 h2,
 h3,
-h3,
+h4,
 h5,
 h6,
 p,
@@ -143,6 +143,7 @@ body {
   /* Shadow variables */
   --headershadow: 0px 5.65789px 4.52632px rgba(0, 0, 0, 0.5);
   --boxshadow: 0 6px 15px 2px rgba(0, 0, 0, 0.25);
+  --sectionshadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
 }
 @media only screen and (min-width: 768px) {
   /* Fallbacks in-case clamp doesnt work */
@@ -206,10 +207,12 @@ h1 > span {
 }
 .infobanner__title,
 .multicol__cardtitle,
-.singlecol__cardtitle {
+.singlecol__cardtitle,
+.contact__sideheader {
   font-size: var(--cardtitle);
   font-weight: 700;
   line-height: 100%;
+  text-shadow: none;
 }
 .multicol--events .multicol__cardtitle {
   /* Slimming these down since the titles are so long */
@@ -247,7 +250,8 @@ span {
   line-height: inherit;
 }
 .buttontext,
-.cta {
+.cta,
+.contact__aside-title {
   font-size: var(--buttontext);
   font-weight: 700;
   line-height: 160%;
@@ -259,7 +263,7 @@ span {
 h1,
 h2,
 h3,
-h3,
+h4,
 .infobanner__title,
 .buttontext,
 .cta,
@@ -269,7 +273,8 @@ h3,
 }
 .footer__list--days,
 .footer__link,
-.footer__address {
+.footer__address,
+.contact__small-title {
   font-weight: 500;
 }
 .footer__list--hours {
@@ -282,15 +287,21 @@ h3,
   font-size: var(--footerbody);
 }
 .footer__title ~ *,
-.footer__link {
+.footer__link,
+.contact__small-title {
   line-height: 160%;
 }
-
+.footer__link,
+.contact__small-title {
+  letter-spacing: 0;
+  font-size: var(--bodytext);
+  text-transform: capitalize;
+}
 /*? Universal Components */
 .hidden {
-  border: 0; 
-  clip: rect(0 0 0 0); 
-  height: 1px; 
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
   margin: -1px;
   overflow: hidden;
   padding: 0;
@@ -360,11 +371,7 @@ h3,
   transform: translateX(10px);
   transition: transform 250ms ease-in-out;
 }
-.footer__link {
-  letter-spacing: 0;
-  font-size: var(--bodytext);
-  text-transform: capitalize;
-}
+
 .footer__link:hover,
 .footer__link:focus,
 .footer__tinylink:hover,
@@ -372,7 +379,7 @@ h3,
   text-decoration: underline;
 }
 /*!----------HEADER------------*/
-header {
+body > header {
   background-color: var(--black);
 }
 .navblock {
@@ -477,7 +484,7 @@ header {
   .navblock__cross {
     display: block;
     position: absolute; /* To position it on top of the bars */
-    
+
     top: 0px;
     left: 1px; /* To center on the bars, as they have 1px difference in real width */
     right: 0;
@@ -630,7 +637,6 @@ main > * {
   align-items: baseline;
   color: var(--whiter);
   grid-area: hero;
-  z-index 2;
 }
 .herobanner--mod .herobanner__textblock {
   padding-bottom: 60px;
@@ -744,11 +750,12 @@ main > * {
   position: relative;
   z-index: 1;
 }
-.multicol--exhibits, .multicol--visit {
+.multicol--exhibits,
+.multicol--visit {
   background: var(--maingradient);
 }
 .multicol--visit2 {
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--sectionshadow);
 }
 .multicol__outerflex {
   padding-bottom: var(--whitespace);
@@ -820,9 +827,10 @@ main > * {
 }
 .multicol__card--visit2 > * {
   flex-grow: 1;
-  flex-basis: calc((680px - 100%) * 999);
+  flex-basis: calc((657px - 100%) * 999);
 }
 .multicol__card--about {
+  border-radius: 3px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -905,17 +913,18 @@ main > * {
   font-size: var(--footertitle);
   font-weight: 500;
   line-height: 160%;
-  max-width 660px;
 }
 .multicol__link {
+  color: #0f544a; /* All my other colors didn't contrast above 7 with white */
   text-transform: none;
   font-size: inherit;
   font-weight: 600;
   letter-spacing: 0;
-}
-.multicol__link:hover {
-  color: var(--orange);
   text-decoration: underline;
+}
+.multicol__link:hover,
+.multicol__focus {
+  color: #0f544a;
 }
 .multicol__hours {
   color: var(--blacktrans);
@@ -940,7 +949,7 @@ main > * {
 }
 .singlecol--explore {
   position: relative;
-  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--sectionshadow);
   z-index: 2;
 }
 .singlecol--explore::before {
@@ -1043,71 +1052,74 @@ img.singlecol__forkids {
 .contact {
   background: linear-gradient(90deg, var(--light-dark) 50%, var(--black) 50%);
   color: var(--white);
+  box-shadow: var(--sectionshadow);
 }
 .contact__wrap {
-  padding: 0 var(--paddington);
+  background: var(--light-dark);
+  padding: 0;
   display: flex;
+}
+.contact__wrap--mod {
   flex-wrap: wrap;
 }
-.contact__wrap--mod > * {
-  min-width: clamp(0px, (780px - 100%) * 999, 100%);
+.contact__wrap > * {
+  min-width: clamp(0px, (768px - 100%) * 999, 100%);
   flex-grow: 1;
 }
 .contact__outerflex {
   background: var(--light-dark);
   flex-basis: 63.8194444444%;
-  padding: 0 clamp(45px, 26.67px + 5.0926vw, 100px) var(--whitespace) var(--paddington);
-  padding-bottom: var(--whitespace);
+  padding: 0 clamp(15px, -20.6672px + 9.9074vw, 100px) var(--whitespace) var(--paddingless);
 }
 .contact__sidebar {
   background: var(--black);
   flex-grow: 1;
   flex-basis: 36.1805555556%;
   max-width: 521px;
-}
-.contact__sidebar--mod {
- padding: 0 var(--paddington) 0 clamp(45px, 26.67px + 5.0926vw, 100px);
+  padding: 0 var(--paddingless) var(--whitespace) clamp(15px, -20.6672px + 9.9074vw, 100px);
 }
 .contact__sidebar--book {
-  padding-right: var(--paddingless);
+  padding-bottom: 0;
   display: none;
   align-items: center;
   justify-content: end;
   justify-items: end;
-  margin-left: 100px;
-  clip-path: polygon(24% 0px, 102.3% 0px, 101.92% 50%, 102.11% 100.00%, 25% 100%, 0% 50%);
+  clip-path: polygon(24% 0px, 102.3% 0px, 101.92% 50%, 102.11% 100%, 25% 100%, 0% 50%);
 }
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 767.5px) {
   .contact__sidebar--book {
     display: grid;
-  }
-  .contact__wrap {
-    padding-right 0;
   }
 }
 .contact__icon {
   display: inline-block;
   margin: auto auto;
-  font-size: 269px;
+  font-size: 170px;
+  font-size: clamp(180px, 78.2857px + 14.7321vw, 269px);
   color: var(--whitetrans);
 }
 .contact__outerflex,
-.contact__input-wrap {
+.contact__input-wrap,
+.contact__innerflex {
   display: flex;
   flex-flow: column;
 }
 .contact__innerflex {
+  align-items: flex-start;
+  margin: calc(15px * -1);
+}
+.contact__fieldset {
+  flex-grow: 1;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
-  margin: calc(15px * -1) 0;
+  align-self: stretch;
+  max-width: 696px;
 }
 .contact__label {
   margin-bottom: 5px;
 }
 .contact__input-wrap {
   flex-basis: 100%;
-  max-width: 696px;
   flex-grow: 1;
 }
 
@@ -1118,7 +1130,7 @@ img.singlecol__forkids {
 .contact__input-wrap,
 .contact__button,
 .contact__success {
-  margin: 15px 0;
+  margin: 15px;
 }
 .contact__input-text--number {
   max-width: 110px;
@@ -1134,7 +1146,7 @@ img.singlecol__forkids {
 }
 .contact__input-wrap--name,
 .contact__input-wrap--email {
-  flex-basis: calc((696px - 100%) * 999);
+  flex-basis: calc((600px - 100%) * 999);
 }
 .contact__input-text {
   border: 1px solid #313641;
@@ -1147,13 +1159,32 @@ img.singlecol__forkids {
 textarea {
   resize: vertical;
 }
+.contact__aside-section--callus {
+  margin-bottom: var(--sectionpadding);
+}
+.contact__aside-section--eventhost {
+  max-width: 250px;
+}
+.contact__sideheader {
+  padding-bottom: 60px;
+}
+.contact__aside-title,
+.contact__aside-wrap {
+  margin-bottom: 15px;
+}
+.contact__asidebody {
+  color: var(--whitetrans);
+}
+.contact__asidebody--mod {
+  margin-top: 15px;
+}
 
 /* Footer styling */
 
 .footer {
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 4;
   background-color: var(--black);
   color: var(--white);
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.25);
