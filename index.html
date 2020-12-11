@@ -146,7 +146,13 @@
               <div class="multicol__imgwrap">
                 <img
                   class="multicol__img"
-                  src="images/aeronautics-1137w@3x.jpg"
+                  srcset="
+                    images/aeronautics-379w@1x.jpg   379w,
+                    images/aeronautics-758w@2x.jpg   758w,
+                    images/aeronautics-1137w@3x.jpg 1137w
+                  "
+                  sizes="(max-width: 883.5px) calc(100vw - (-41.3333px + 19.8148vw)), 378.67px"
+                  src="images/aeronautics-758w@2x.jpg"
                   alt="Aeronautics Exhibition's display of a pressure suit previously worn by high-altitude pilots"
                 />
               </div>
@@ -162,7 +168,9 @@
               <div class="multicol__imgwrap">
                 <img
                   class="multicol__img"
-                  src="images/night-1137w@3x.jpg"
+                  srcset="images/night-379w@1x.jpg 379w, images/night-758w@2x.jpg 758w, images/night-1137w@3x.jpg 1137w"
+                  sizes="(max-width: 883.5px) calc(100vw - (-41.3333px + 19.8148vw)), 378.67px"
+                  src="images/night-758w@2x.jpg"
                   alt="Museum exhibitions in dim light, particularly a bicycle and a glowing sphere"
                 />
               </div>
@@ -179,6 +187,12 @@
               <div class="multicol__imgwrap">
                 <img
                   class="multicol__img"
+                  srcset="
+                    images/energetica-379w@1x.jpg   379w,
+                    images/energetica-758w@2x.jpg   758w,
+                    images/energetica-1137w@3x.jpg 1137w
+                  "
+                  sizes="(max-width: 1257.5px) calc(100vw - (-41.3333px + 19.8148vw)), 378.67px"
                   src="images/energetica-1137w@3x.jpg"
                   alt="Young girl in lab coat interacting with one of the Energetica displays"
                 />
@@ -202,7 +216,11 @@
           <div class="singlecol__cardblock singlecol__cardblock--explore">
             <section class="singlecol__card singlecol__card--1">
               <picture class="singlecol__imgwrap singlecol__imgwrap--left">
-                <source media="(max-width: 945px)" srcset="images/forkids-799w.jpg" />
+                <source
+                  media="(max-width: 945px)"
+                  srcset="images/forkids-380w.jpg 380w, images/forkids-799w.jpg 799w"
+                  sizes="calc(100vw - (-41.3333px + 19.8148vw))"
+                />
                 <source media="(min-width: 945.5px)" srcset="images/forkids-590w.jpg" />
                 <img
                   class="singlecol__forkids"
@@ -226,9 +244,15 @@
               </div>
             </section>
             <section class="singlecol__card singlecol__card--2">
-              <div class="singlecol__imgwrap singlecol__imgwrap--right">
-                <img src="images/forteachers-1080w.jpg" alt="Kids and teacher look at a space capsule at the museum" />
-              </div>
+              <picture class="singlecol__imgwrap singlecol__imgwrap--right">
+                <source
+                  media="(max-width: 945px)"
+                  srcset="images/forteachers-380w.jpg 380w, images/forteachers-799w.jpg 799w"
+                  sizes="calc(100vw - (-41.3333px + 19.8148vw))"
+                />
+                <source media="(min-width: 945.5px)" srcset="images/forteachers-736w.jpg" />
+                <img src="images/forteachers-736w.jpg" alt="Kids and teacher look at a space capsule at the museum" />
+              </picture>
               <div class="singlecol__cardtext">
                 <h3 class="singlecol__cardtitle">For Teachers</h3>
                 <div class="singlecol__cardbody">
@@ -243,9 +267,15 @@
               </div>
             </section>
             <section class="singlecol__card singlecol__card--3">
-              <div class="singlecol__imgwrap singlecol__imgwrap--right">
-                <img src="images/researchers-1080w.jpg" alt="Researchers doing a science experiment" />
-              </div>
+              <picture class="singlecol__imgwrap singlecol__imgwrap--right">
+                <source
+                  media="(max-width: 945px)"
+                  srcset="images/researchers-380w.jpg 380w, images/researchers-799w2.jpg 799w"
+                  sizes="calc(100vw - (-41.3333px + 19.8148vw))"
+                />
+                <source media="(min-width: 945.5px)" srcset="images/researchers-641w.jpg" />
+                <img src="images/researchers-799w2.jpg" alt="Researchers doing a science experiment" />
+              </picture>
               <div class="singlecol__cardtext">
                 <h3 class="singlecol__cardtitle">For Researchers</h3>
                 <div class="singlecol__cardbody">

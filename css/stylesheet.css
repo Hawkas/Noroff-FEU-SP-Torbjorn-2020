@@ -1049,8 +1049,12 @@ main > * {
   margin-bottom: 30px;
 }
 .infobanner__textblock--opening {
-  margin-right: var(--whitespace);
   align-items: stretch;
+}
+@media only screen and (min-width: 756.5px) {
+  .infobanner__textblock--opening {
+    margin-right: var(--whitespace);
+  }
 }
 .infobanner__lists {
   display: flex;
@@ -1199,7 +1203,6 @@ main > * {
   height: clamp(309px, 236.333px + 20.1852vw, 527px);
 }
 .multicol__imgwrap--about {
-  display: none;
   border-radius: 0 3px 0 0;
   max-width: 409px;
   max-height: 282.6px;
