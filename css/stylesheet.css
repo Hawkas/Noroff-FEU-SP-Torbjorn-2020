@@ -1449,24 +1449,24 @@ img.singlecol__forkids {
   }
 }
 .contact__icon {
-  display: inline-block;
-  margin: auto auto;
   font-size: 170px;
   font-size: clamp(180px, 78.2857px + 14.7321vw, 269px);
   color: var(--whitetrans);
 }
 .contact__outerflex,
-.contact__input-wrap,
-.contact__innerflex {
+.contact__input-wrap {
   display: flex;
   flex-flow: column;
 }
 .contact__innerflex {
-  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   margin: calc(15px * -1);
 }
 .contact__fieldset {
   flex-grow: 1;
+  flex-basis: 100%;
   display: flex;
   flex-flow: row wrap;
   align-self: stretch;
