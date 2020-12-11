@@ -457,7 +457,7 @@ video {
   --blacktrans: rgba(49, 54, 58, 0.8);
   --maingradient: linear-gradient(180deg, rgb(21, 29, 34) 0%, #313641 100%);
   /* Text style */
-  --exo: "Exo 2", Arial, sans-serif; /* Fallbacks in-case clamp doesnt work */
+  /* Fallbacks in-case clamp doesnt work */
   --footertos: 0.875rem;
   --h1: 2.5rem;
   --sectiontitle: 2rem;
@@ -521,7 +521,7 @@ video {
 html {
   box-sizing: border-box;
   font-size: 16px;
-  font-family: var(--exo);
+  font-family: "Exo 2", Arial, sans-serif;
 }
 *,
 *:before,
